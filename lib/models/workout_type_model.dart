@@ -1,26 +1,26 @@
 class WorkoutType {
-  final int? id; // Primary key (nullable for new entries)
-  final String name; // Workout type name
+  final int? id;
+  final String name;
+  final String locale;
 
-  WorkoutType({this.id, required this.name});
+  WorkoutType({this.id, required this.name, required this.locale});
 
-  // Convert a WorkoutType object to a map (for inserting into the database)
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
+      'locale': locale,
     };
   }
 
-  // Create a WorkoutType object from a map (retrieved from the database)
   factory WorkoutType.fromMap(Map<String, dynamic> map) {
     return WorkoutType(
       id: map['id'],
       name: map['name'],
+      locale: map['locale'],
     );
   }
 
-  // Convert a list of maps to a list of WorkoutType objects
   static List<WorkoutType> fromList(List<Map<String, dynamic>> list) {
     return list.map((map) => WorkoutType.fromMap(map)).toList();
   }

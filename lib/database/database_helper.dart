@@ -3,9 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
-
   factory DatabaseHelper() => _instance;
-
   DatabaseHelper._internal();
 
   Database? _database;
@@ -22,7 +20,7 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 3, // Increment the database version
+      version: 5, // DB 버전 업데이트
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE workouts (
@@ -43,46 +41,47 @@ class DatabaseHelper {
           )
         ''');
 
+        // workout_types 테이블 생성
         await db.execute('''
           CREATE TABLE workout_types (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL
+            name TEXT NOT NULL,
+            locale TEXT NOT NULL
           )
         ''');
 
-        // Insert default workout types
+        // 기본 workout_types 삽입
         await _insertDefaultWorkoutTypes(db);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 2) {
-          await db.execute('ALTER TABLE workouts ADD COLUMN date TEXT');
-          await db.execute('ALTER TABLE sleep ADD COLUMN date TEXT');
-        }
-        if (oldVersion < 3) {
+        if (oldVersion < 5) {
+          // workout_types 테이블 생성
           await db.execute('''
-            CREATE TABLE workout_types (
+            CREATE TABLE IF NOT EXISTS workout_types (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
-              name TEXT NOT NULL
+              name TEXT NOT NULL,
+              locale TEXT NOT NULL
             )
           ''');
 
+          // 기본 workout_types 삽입
           await _insertDefaultWorkoutTypes(db);
         }
       },
     );
   }
 
+  /// 기본 workout_types 삽입
   Future<void> _insertDefaultWorkoutTypes(Database db) async {
-    const defaultTypes = [
-      '러닝',
-      '자전거 타기',
-      '요가',
-      '웨이트 트레이닝',
-      '수영',
-    ];
+    const defaultTypes = {
+      'en': ['Running', 'Cycling', 'Yoga', 'Weight Training', 'Swimming', 'Tennis', 'Pilates', 'Soccer', 'Basketball'],
+      'ko': ['러닝', '자전거 타기', '요가', '웨이트 트레이닝', '수영', '테니스', '필라테스', '축구', '농구'],
+    };
 
-    for (String type in defaultTypes) {
-      await db.insert('workout_types', {'name': type});
+    for (var locale in defaultTypes.keys) {
+      for (var type in defaultTypes[locale]!) {
+        await db.insert('workout_types', {'name': type, 'locale': locale});
+      }
     }
   }
 }

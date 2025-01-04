@@ -24,23 +24,42 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(year) => "${year}";
 
+  static String m2(type) => "Are you sure you want to delete ${type}?";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add": MessageLookupByLibrary.simpleMessage("Add"),
+        "addNewWorkoutTypeHint":
+            MessageLookupByLibrary.simpleMessage("Enter a new workout type"),
         "addSleepRecord":
             MessageLookupByLibrary.simpleMessage("Add New Sleep Record"),
+        "addWorkoutType":
+            MessageLookupByLibrary.simpleMessage("Add Workout Type"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "close": MessageLookupByLibrary.simpleMessage("Close"),
         "dateHeader_month": m0,
         "dateHeader_today": MessageLookupByLibrary.simpleMessage("Today"),
         "dateHeader_year": m1,
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteConfirmation":
+            MessageLookupByLibrary.simpleMessage("Delete Confirmation"),
+        "deleteWorkoutTypeConfirmation": m2,
+        "durationInMinutes":
+            MessageLookupByLibrary.simpleMessage("Duration (minutes)"),
         "editSleepRecord":
             MessageLookupByLibrary.simpleMessage("Edit Sleep Record"),
+        "editWorkoutRecord":
+            MessageLookupByLibrary.simpleMessage("Edit Workout Record"),
+        "editWorkoutTypeHint":
+            MessageLookupByLibrary.simpleMessage("Edit workout type"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hours": MessageLookupByLibrary.simpleMessage("h"),
         "minutes": MessageLookupByLibrary.simpleMessage("m"),
         "noWorkoutMessage": MessageLookupByLibrary.simpleMessage(
             "What kind of workout did you do today? 🏋️\nSmall movements lead to big changes! 💪"),
+        "noWorkoutTypes":
+            MessageLookupByLibrary.simpleMessage("No workout types available."),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sleep": MessageLookupByLibrary.simpleMessage("Sleep"),
@@ -50,6 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalWorkoutDuration":
             MessageLookupByLibrary.simpleMessage("Total Workout Duration"),
         "wakeTimeLabel": MessageLookupByLibrary.simpleMessage("Wake Time"),
-        "workout": MessageLookupByLibrary.simpleMessage("Workout")
+        "workout": MessageLookupByLibrary.simpleMessage("Workout"),
+        "workoutRecordInput":
+            MessageLookupByLibrary.simpleMessage("Workout Record Input"),
+        "workoutTypeManagement":
+            MessageLookupByLibrary.simpleMessage("Workout Type Management"),
+        "workoutTypeSelect":
+            MessageLookupByLibrary.simpleMessage("Select Workout Type")
       };
 }

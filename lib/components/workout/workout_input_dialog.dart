@@ -3,6 +3,8 @@ import '../../models/workout_record_model.dart';
 import '../../models/workout_type_model.dart';
 import '../../services/workout_service.dart';
 import '../../services/workout_type_service.dart';
+import '../../generated/l10n.dart'; // 다국어 처리 S 클래스 사용
+import '../../common/common_styles.dart'; // 공통 스타일 사용
 import 'workout_type_settings_dialog.dart';
 
 void showWorkoutInputDialog(
@@ -43,12 +45,15 @@ void showWorkoutInputDialog(
       return StatefulBuilder(
         builder: (context, setState) {
           return AlertDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: CommonStyles.dialogShape,
             title: Row(
               children: [
-                Icon(Icons.fitness_center, color: Colors.blueAccent),
+                Icon(Icons.fitness_center, color: Color(0xFFAEDFF7)),
                 SizedBox(width: 8),
-                Text("운동 기록 수정", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  S.of(context).editWorkoutRecord,
+                  style: CommonStyles.titleStyle.copyWith(fontSize: 18),
+                ),
               ],
             ),
             content: SizedBox(
@@ -57,7 +62,7 @@ void showWorkoutInputDialog(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("운동 타입 선택", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text(S.of(context).workoutTypeSelect, style: CommonStyles.smallTextStyle),
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
@@ -76,7 +81,7 @@ void showWorkoutInputDialog(
                           );
                         }).toList(),
                         FilterChip(
-                          label: Text("+ 운동 타입 추가"),
+                          label: Text(S.of(context).addWorkoutType),
                           backgroundColor: Colors.grey[300],
                           onSelected: (isSelected) {
                             Navigator.pop(context);
@@ -90,7 +95,7 @@ void showWorkoutInputDialog(
                       ],
                     ),
                     SizedBox(height: 16),
-                    Text("운동 기록 입력", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text(S.of(context).workoutRecordInput, style: CommonStyles.smallTextStyle),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -113,7 +118,7 @@ void showWorkoutInputDialog(
                                   controller: durationControllers[index],
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
-                                    hintText: "시간 (분)",
+                                    hintText: S.of(context).durationInMinutes,
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                                   ),
@@ -150,7 +155,7 @@ void showWorkoutInputDialog(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("취소"),
+                child: Text(S.of(context).cancel, style: TextStyle(color: Colors.grey)),
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -170,10 +175,10 @@ void showWorkoutInputDialog(
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  backgroundColor: Color(0xFFAEDFF7),
+                  shape: CommonStyles.dialogShape,
                 ),
-                child: Text("저장"),
+                child: Text(S.of(context).save),
               ),
             ],
           );

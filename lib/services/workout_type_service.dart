@@ -7,7 +7,17 @@ class WorkoutTypeService {
   /// 📋 모든 운동 타입 가져오기
   Future<List<WorkoutType>> getAllWorkoutTypes() async {
     try {
-      return await _workoutTypeRepository.getAllWorkoutTypes();
+      return await _workoutTypeRepository.getWorkoutTypesByLocale('en'); // 기본 로케일 설정
+    } catch (e) {
+      print("Error fetching workout types: $e");
+      return [];
+    }
+  }
+
+  /// 특정 로케일에 따른 운동 타입 가져오기
+  Future<List<WorkoutType>> getWorkoutTypesByLocale(String locale) async {
+    try {
+      return await _workoutTypeRepository.getWorkoutTypesByLocale(locale);
     } catch (e) {
       print("Error fetching workout types: $e");
       return [];
@@ -15,11 +25,11 @@ class WorkoutTypeService {
   }
 
   /// ➕ 새로운 운동 타입 추가
-  Future<void> addWorkoutType(String name) async {
+  Future<void> addWorkoutType(String name, String locale) async {
     try {
       final exists = await _workoutTypeRepository.workoutTypeExists(name);
       if (!exists) {
-        await _workoutTypeRepository.addWorkoutType(name);
+        await _workoutTypeRepository.addWorkoutType(name, locale);
       } else {
         print("Workout type already exists.");
       }
@@ -43,16 +53,6 @@ class WorkoutTypeService {
       await _workoutTypeRepository.deleteWorkoutType(id);
     } catch (e) {
       print("Error deleting workout type: $e");
-    }
-  }
-
-  /// 🔍 운동 타입 존재 여부 확인
-  Future<bool> workoutTypeExists(String name) async {
-    try {
-      return await _workoutTypeRepository.workoutTypeExists(name);
-    } catch (e) {
-      print("Error checking workout type existence: $e");
-      return false;
     }
   }
 }

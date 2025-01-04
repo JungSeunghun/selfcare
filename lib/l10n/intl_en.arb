@@ -21,5 +21,19 @@
   "save": "Save",
   "workout": "Workout",
   "noWorkoutMessage": "What kind of workout did you do today? 🏋️\nSmall movements lead to big changes! 💪",
-  "totalWorkoutDuration": "Total Workout Duration"
+  "totalWorkoutDuration": "Total Workout Duration",
+  "editWorkoutRecord": "Edit Workout Record",
+  "workoutTypeSelect": "Select Workout Type",
+  "addWorkoutType": "Add Workout Type",
+  "workoutRecordInput": "Workout Record Input",
+  "durationInMinutes": "Duration (minutes)",
+  "workoutTypeManagement": "Workout Type Management",
+  "noWorkoutTypes": "No workout types available.",
+  "addNewWorkoutTypeHint": "Enter a new workout type",
+  "add": "Add",
+  "editWorkoutTypeHint": "Edit workout type",
+  "deleteConfirmation": "Delete Confirmation",
+  "deleteWorkoutTypeConfirmation": "Are you sure you want to delete {type}?",
+  "close": "Close",
+  "delete": "Delete"
 }

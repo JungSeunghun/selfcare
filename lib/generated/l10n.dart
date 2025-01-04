@@ -249,6 +249,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit Workout Record`
+  String get editWorkoutRecord {
+    return Intl.message(
+      'Edit Workout Record',
+      name: 'editWorkoutRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Workout Type`
+  String get workoutTypeSelect {
+    return Intl.message(
+      'Select Workout Type',
+      name: 'workoutTypeSelect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Workout Type`
+  String get addWorkoutType {
+    return Intl.message(
+      'Add Workout Type',
+      name: 'addWorkoutType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout Record Input`
+  String get workoutRecordInput {
+    return Intl.message(
+      'Workout Record Input',
+      name: 'workoutRecordInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration (minutes)`
+  String get durationInMinutes {
+    return Intl.message(
+      'Duration (minutes)',
+      name: 'durationInMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Workout Type Management`
+  String get workoutTypeManagement {
+    return Intl.message(
+      'Workout Type Management',
+      name: 'workoutTypeManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No workout types available.`
+  String get noWorkoutTypes {
+    return Intl.message(
+      'No workout types available.',
+      name: 'noWorkoutTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a new workout type`
+  String get addNewWorkoutTypeHint {
+    return Intl.message(
+      'Enter a new workout type',
+      name: 'addNewWorkoutTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit workout type`
+  String get editWorkoutTypeHint {
+    return Intl.message(
+      'Edit workout type',
+      name: 'editWorkoutTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Confirmation`
+  String get deleteConfirmation {
+    return Intl.message(
+      'Delete Confirmation',
+      name: 'deleteConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete {type}?`
+  String deleteWorkoutTypeConfirmation(Object type) {
+    return Intl.message(
+      'Are you sure you want to delete $type?',
+      name: 'deleteWorkoutTypeConfirmation',
+      desc: '',
+      args: [type],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
