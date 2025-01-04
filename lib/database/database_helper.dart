@@ -1,5 +1,10 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'tables/workout_table.dart';
+import 'tables/sleep_table.dart';
+import 'tables/emotion_table.dart';
+import 'seed_data/workout_seed.dart';
+import 'seed_data/emotion_seed.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -20,68 +25,26 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 5, // DB 버전 업데이트
+      version: 6,
       onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE workouts (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            workoutType TEXT,
-            duration INTEGER,
-            date TEXT
-          )
-        ''');
+        // 테이블 생성
+        await WorkoutTable.create(db);
+        await SleepTable.create(db);
+        await EmotionTable.create(db);
 
-        await db.execute('''
-          CREATE TABLE sleep (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            sleepTime TEXT,
-            wakeTime TEXT,
-            totalSleepDuration TEXT,
-            date TEXT
-          )
-        ''');
-
-        // workout_types 테이블 생성
-        await db.execute('''
-          CREATE TABLE workout_types (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            locale TEXT NOT NULL
-          )
-        ''');
-
-        // 기본 workout_types 삽입
-        await _insertDefaultWorkoutTypes(db);
+        // 기본 데이터 삽입
+        await WorkoutSeed.insertDefaultData(db);
+        await EmotionSeed.insertDefaultData(db);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 5) {
-          // workout_types 테이블 생성
-          await db.execute('''
-            CREATE TABLE IF NOT EXISTS workout_types (
-              id INTEGER PRIMARY KEY AUTOINCREMENT,
-              name TEXT NOT NULL,
-              locale TEXT NOT NULL
-            )
-          ''');
-
-          // 기본 workout_types 삽입
-          await _insertDefaultWorkoutTypes(db);
+        if (oldVersion < 6) {
+          await WorkoutTable.create(db);
+          await SleepTable.create(db);
+          await EmotionTable.create(db);
+          await WorkoutSeed.insertDefaultData(db);
+          await EmotionSeed.insertDefaultData(db);
         }
       },
     );
-  }
-
-  /// 기본 workout_types 삽입
-  Future<void> _insertDefaultWorkoutTypes(Database db) async {
-    const defaultTypes = {
-      'en': ['Running', 'Cycling', 'Yoga', 'Weight Training', 'Swimming', 'Tennis', 'Pilates', 'Soccer', 'Basketball'],
-      'ko': ['러닝', '자전거 타기', '요가', '웨이트 트레이닝', '수영', '테니스', '필라테스', '축구', '농구'],
-    };
-
-    for (var locale in defaultTypes.keys) {
-      for (var type in defaultTypes[locale]!) {
-        await db.insert('workout_types', {'name': type, 'locale': locale});
-      }
-    }
   }
 }
