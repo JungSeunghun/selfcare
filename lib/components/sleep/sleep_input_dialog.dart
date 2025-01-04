@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../common/common_styles.dart';
 import '../../models/sleep_record_model.dart';
+import '../../generated/l10n.dart'; // S 클래스 사용
 
 void showSleepInputDialog(BuildContext context, SleepRecord sleepData, Function(SleepRecord) onSave) {
   String newSleepTime = sleepData.sleepTime;
@@ -18,7 +19,9 @@ void showSleepInputDialog(BuildContext context, SleepRecord sleepData, Function(
                 Icon(Icons.bedtime, color: Color(0xFFAEDFF7)),
                 SizedBox(width: 8),
                 Text(
-                  sleepData.id == null ? "새로운 수면 기록 추가" : "수면 기록 수정",
+                  sleepData.id == null
+                      ? S.of(context).addSleepRecord // "새로운 수면 기록 추가"
+                      : S.of(context).editSleepRecord, // "수면 기록 수정"
                   style: CommonStyles.titleStyle.copyWith(fontSize: 18),
                 ),
               ],
@@ -26,15 +29,15 @@ void showSleepInputDialog(BuildContext context, SleepRecord sleepData, Function(
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildTimePickerRow(context, "잤는 시간", newSleepTime, (picked) => setState(() => newSleepTime = picked)),
+                _buildTimePickerRow(context, S.of(context).sleepTimeLabel, newSleepTime, (picked) => setState(() => newSleepTime = picked)),
                 SizedBox(height: 16),
-                _buildTimePickerRow(context, "일어난 시간", newWakeTime, (picked) => setState(() => newWakeTime = picked)),
+                _buildTimePickerRow(context, S.of(context).wakeTimeLabel, newWakeTime, (picked) => setState(() => newWakeTime = picked)),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text("취소", style: TextStyle(color: Colors.grey)),
+                child: Text(S.of(context).cancel, style: TextStyle(color: Colors.grey)), // "취소"
               ),
               ElevatedButton(
                 onPressed: () {
@@ -43,7 +46,7 @@ void showSleepInputDialog(BuildContext context, SleepRecord sleepData, Function(
                     date: sleepData.date,
                     sleepTime: newSleepTime,
                     wakeTime: newWakeTime,
-                    totalSleepDuration: calculateSleepDuration(newSleepTime, newWakeTime),
+                    totalSleepDuration: calculateSleepDuration(context, newSleepTime, newWakeTime),
                   );
                   onSave(updatedRecord);
                   Navigator.pop(context);
@@ -52,7 +55,7 @@ void showSleepInputDialog(BuildContext context, SleepRecord sleepData, Function(
                   backgroundColor: Color(0xFFAEDFF7),
                   shape: CommonStyles.dialogShape,
                 ),
-                child: Text(sleepData.id == null ? "추가" : "저장"),
+                child: Text(sleepData.id == null ? S.of(context).add : S.of(context).save), // "추가" 또는 "저장"
               ),
             ],
           );
@@ -84,7 +87,7 @@ Widget _buildTimePickerRow(BuildContext context, String label, String initialTim
   );
 }
 
-String calculateSleepDuration(String sleepTime, String wakeTime) {
+String calculateSleepDuration(BuildContext context, String sleepTime, String wakeTime) {
   try {
     final sleepParts = sleepTime.split(":").map(int.parse).toList();
     final wakeParts = wakeTime.split(":").map(int.parse).toList();
@@ -93,8 +96,8 @@ String calculateSleepDuration(String sleepTime, String wakeTime) {
     final durationMinutes = (wakeMinutes - sleepMinutes + 24 * 60) % (24 * 60);
     final hours = durationMinutes ~/ 60;
     final minutes = durationMinutes % 60;
-    return "${hours}시간 ${minutes}분";
+    return "${hours}${S.of(context).hours} ${minutes}${S.of(context).minutes}"; // "시간" 및 "분" 추가
   } catch (e) {
-    return "0시간 0분";
+    return "0${S.of(context).hours} 0${S.of(context).minutes}";
   }
 }

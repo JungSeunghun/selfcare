@@ -12,7 +12,8 @@ class DateHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentDate = DateFormat('yMd').parse(selectedDate); // Use DateFormat to parse the date
+    final locale = Localizations.localeOf(context).toString(); // Get current locale
+    final currentDate = DateFormat.yMd(locale).parse(selectedDate);
     final pastelBlue = Color(0xFFAEDFF7);
 
     return Padding(
@@ -26,7 +27,7 @@ class DateHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                DateFormat('MMMM', 'ko_KR').format(currentDate),
+                DateFormat.MMMM(locale).format(currentDate),
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -35,7 +36,7 @@ class DateHeader extends StatelessWidget {
               ),
               SizedBox(width: 8),
               Text(
-                DateFormat('y년', 'ko_KR').format(currentDate),
+                DateFormat.y(locale).format(currentDate),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
@@ -50,13 +51,13 @@ class DateHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(7, (index) {
               final day = currentDate.subtract(Duration(days: currentDate.weekday - 1 - index));
-              final isSelected = DateFormat('yMd').format(day) == selectedDate;
+              final isSelected = DateFormat.yMd(locale).format(day) == selectedDate;
               return GestureDetector(
-                onTap: () => onDateChange(DateFormat('yMd').format(day)),
+                onTap: () => onDateChange(DateFormat.yMd(locale).format(day)),
                 child: Column(
                   children: [
                     Text(
-                      DateFormat('E', 'ko_KR').format(day),
+                      DateFormat.E(locale).format(day),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -71,7 +72,7 @@ class DateHeader extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(8),
                       child: Text(
-                        DateFormat('d').format(day),
+                        DateFormat.d().format(day),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

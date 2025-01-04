@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../common/common_styles.dart';
 import '../../models/sleep_record_model.dart';
 import 'sleep_input_dialog.dart';
+import '../../generated/l10n.dart'; // S 클래스 사용
 
 class SleepCardWidget extends StatelessWidget {
   final SleepRecord sleepData;
@@ -15,7 +16,7 @@ class SleepCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isNewRecord = sleepData.id == null;
-    final totalSleepDuration = calculateSleepDuration(sleepData.sleepTime, sleepData.wakeTime);
+    final totalSleepDuration = calculateSleepDuration(context, sleepData.sleepTime, sleepData.wakeTime);
 
     return GestureDetector(
       onTap: () => showSleepInputDialog(context, sleepData, onSave),
@@ -30,19 +31,20 @@ class SleepCardWidget extends StatelessWidget {
                 children: [
                   Icon(Icons.bedtime, size: 40, color: Colors.white),
                   SizedBox(width: 12),
-                  Text("수면", style: CommonStyles.titleStyle),
+                  Text(S.of(context).sleep, style: CommonStyles.titleStyle),
                 ],
               ),
               SizedBox(height: 24),
               if (isNewRecord)
                 Center(
                   child: Text(
-                    "오늘은 얼마나 푹 잤나요? 💤\n따뜻한 하루 되세요! 🌞",
+                    S.of(context).sleepMessage,
                     textAlign: TextAlign.center,
                     style: CommonStyles.smallTextStyle.copyWith(
                       color: Colors.grey.shade700,
                       fontStyle: FontStyle.italic,
                     ),
+                    softWrap: true,
                   ),
                 )
               else ...[
@@ -64,8 +66,7 @@ class SleepCardWidget extends StatelessWidget {
     );
   }
 
-  /// 수면 시간 계산 메서드
-  String calculateSleepDuration(String sleepTime, String wakeTime) {
+  String calculateSleepDuration(BuildContext context, String sleepTime, String wakeTime) {
     try {
       final sleepParts = sleepTime.split(":").map(int.parse).toList();
       final wakeParts = wakeTime.split(":").map(int.parse).toList();
@@ -74,9 +75,9 @@ class SleepCardWidget extends StatelessWidget {
       final durationMinutes = (wakeMinutes - sleepMinutes + 24 * 60) % (24 * 60);
       final hours = durationMinutes ~/ 60;
       final minutes = durationMinutes % 60;
-      return "${hours}시간 ${minutes}분";
+      return "${hours}${S.of(context).hours} ${minutes}${S.of(context).minutes}";
     } catch (e) {
-      return "0시간 0분";
+      return "0${S.of(context).hours} 0${S.of(context).minutes}";
     }
   }
 }

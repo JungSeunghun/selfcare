@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'generated/l10n.dart';
 import 'components/pinterest_grid_view_builder.dart';
 import 'components/date_header.dart';
 import 'services/sleep_service.dart';
@@ -15,8 +16,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final Map<String, IconData> icons = {
-    "수면": Ionicons.bed_outline,
-    "운동": Ionicons.fitness_outline,
+    S.current.sleep: Ionicons.bed_outline,
+    S.current.workout: Ionicons.fitness_outline,
   };
 
   final SleepService _sleepService = SleepService();
@@ -33,10 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadDataForDate(selectedDate);
   }
 
-  /// 날짜에 따른 데이터 로드
   Future<void> _loadDataForDate(String date) async {
     setState(() {
-      isLoading = true; // 로딩 시작
+      isLoading = true;
     });
 
     final sleepRecord = await _sleepService.getSleepRecordByDate(date);
@@ -45,18 +45,16 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       sleepData = sleepRecord;
       workoutData = workouts;
-      isLoading = false; // 로딩 완료
+      isLoading = false;
     });
   }
 
-  /// 수면 데이터 업데이트
   void _updateSleepData(SleepRecord updatedRecord) {
     setState(() {
       sleepData = updatedRecord;
     });
   }
 
-  /// 운동 데이터 업데이트
   void _updateWorkoutData(List<WorkoutRecord> updatedRecords) {
     setState(() {
       workoutData = updatedRecords;
@@ -110,18 +108,18 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Color(0xFFAEDFF7),
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: '홈',
+            label: S.of(context).home,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.analytics),
-            label: '분석',
+            label: S.of(context).analytics,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: '설정',
+            label: S.of(context).settings,
           ),
         ],
       ),

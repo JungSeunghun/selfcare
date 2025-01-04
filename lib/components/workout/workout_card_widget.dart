@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common/common_styles.dart';
+import '../../generated/l10n.dart';
 import '../../models/workout_record_model.dart';
 import 'workout_input_dialog.dart';
 
@@ -40,7 +41,7 @@ class _WorkoutCardWidgetState extends State<WorkoutCardWidget> {
                 children: [
                   Icon(Icons.fitness_center, size: 40, color: Colors.white),
                   SizedBox(width: 12),
-                  Text("운동", style: CommonStyles.titleStyle),
+                  Text(S.of(context).workout, style: CommonStyles.titleStyle),
                 ],
               ),
               SizedBox(height: 24),
@@ -49,12 +50,13 @@ class _WorkoutCardWidgetState extends State<WorkoutCardWidget> {
               if (isNewRecord)
                 Center(
                   child: Text(
-                    "오늘은 어떤 운동을 했나요? 🏋️\n작은 움직임이 큰 변화를 만듭니다! 💪",
+                    S.of(context).noWorkoutMessage,
                     textAlign: TextAlign.center,
                     style: CommonStyles.smallTextStyle.copyWith(
                       color: Colors.grey.shade700,
                       fontStyle: FontStyle.italic,
                     ),
+                    softWrap: true,
                   ),
                 )
               else ...[
@@ -63,8 +65,9 @@ class _WorkoutCardWidgetState extends State<WorkoutCardWidget> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 4,
                         children: [
                           Text(
                             workout.workoutType,
@@ -74,7 +77,7 @@ class _WorkoutCardWidgetState extends State<WorkoutCardWidget> {
                             ),
                           ),
                           Text(
-                            "${workout.duration}분",
+                            "${workout.duration}${S.of(context).minutes}",
                             style: CommonStyles.smallTextStyle.copyWith(color: Colors.black54),
                           ),
                         ],
@@ -89,7 +92,7 @@ class _WorkoutCardWidgetState extends State<WorkoutCardWidget> {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Center(
                     child: Text(
-                      "총 운동 시간: ${totalDuration}분",
+                      "${S.of(context).totalWorkoutDuration}: ${totalDuration}${S.of(context).minutes}",
                       style: CommonStyles.smallTextStyle.copyWith(
                         color: Colors.black54,
                         fontSize: 14,
