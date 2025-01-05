@@ -37,7 +37,7 @@
   "close": "닫기",
   "delete": "삭제",
   "emotion": "감정",
-  "emotionMessage": "오늘은 기분이 어떤가요? 😊\n스스로를 돌보는 따뜻한 시간을 가져보세요. 💙",
+  "emotionMessage": "오늘은 기분이\n어떤가요? 😊\n스스로를 돌보는 따뜻한 시간을 가져보세요. 💙",
   "intensityLabel": "점",
   "editEmotionRecord": "감정 기록 수정",
   "emotionTypeSelect": "감정 타입 선택",
@@ -46,5 +46,13 @@
   "noEmotionTypes": "사용 가능한 감정 유형이 없습니다.",
   "addEmotionType": "새로운 감정 유형 추가",
   "editEmotionTypeHint": "감정 유형 수정",
-  "deleteEmotionTypeConfirmation": "{type}을(를) 삭제하시겠습니까?"
+  "deleteEmotionTypeConfirmation": "{type}을(를) 삭제하시겠습니까?",
+  "income_expense": "수입/지출",
+  "noIncomeExpenseMessage": "수입/지출 기록이 없습니다.",
+  "totalIncomeExpense": "총 금액",
+  "editIncomeExpenseRecord": "수입/지출 기록 편집",
+  "addIncome": "수입 추가",
+  "addExpense": "지출 추가",
+  "enterAmount": "금액 입력",
+  "currency": "원"
 }

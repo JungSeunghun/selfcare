@@ -1,3 +1,5 @@
+import 'package:selfcare/database/seed_data/income_expense_seed.dart';
+import 'package:selfcare/database/tables/income_expense_table.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'tables/workout_table.dart';
@@ -31,10 +33,12 @@ class DatabaseHelper {
         await WorkoutTable.create(db);
         await SleepTable.create(db);
         await EmotionTable.create(db);
+        await IncomeExpenseTypeTable.create(db);
 
         // 기본 데이터 삽입
         await WorkoutSeed.insertDefaultData(db);
         await EmotionSeed.insertDefaultData(db);
+        await IncomeExpenseSeed.insertDefaultData(db);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
       },

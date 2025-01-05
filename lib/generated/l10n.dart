@@ -270,10 +270,10 @@ class S {
     );
   }
 
-  /// `Add Workout Type`
+  /// `Add New Workout Type`
   String get addWorkoutType {
     return Intl.message(
-      'Add Workout Type',
+      'Add New Workout Type',
       name: 'addWorkoutType',
       desc: '',
       args: [],
@@ -487,6 +487,86 @@ class S {
       name: 'deleteEmotionTypeConfirmation',
       desc: '',
       args: [type],
+    );
+  }
+
+  /// `Income/Expense`
+  String get income_expense {
+    return Intl.message(
+      'Income/Expense',
+      name: 'income_expense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No income or expense records available.`
+  String get noIncomeExpenseMessage {
+    return Intl.message(
+      'No income or expense records available.',
+      name: 'noIncomeExpenseMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Amount`
+  String get totalIncomeExpense {
+    return Intl.message(
+      'Total Amount',
+      name: 'totalIncomeExpense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Income/Expense Record`
+  String get editIncomeExpenseRecord {
+    return Intl.message(
+      'Edit Income/Expense Record',
+      name: 'editIncomeExpenseRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Income`
+  String get addIncome {
+    return Intl.message(
+      'Add Income',
+      name: 'addIncome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Expense`
+  String get addExpense {
+    return Intl.message(
+      'Add Expense',
+      name: 'addExpense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Amount`
+  String get enterAmount {
+    return Intl.message(
+      'Enter Amount',
+      name: 'enterAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `USD`
+  String get currency {
+    return Intl.message(
+      'USD',
+      name: 'currency',
+      desc: '',
+      args: [],
     );
   }
 }

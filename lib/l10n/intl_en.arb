@@ -46,5 +46,13 @@
   "noEmotionTypes": "No emotion types available.",
   "addEmotionType": "Add New Emotion Type",
   "editEmotionTypeHint": "Edit Emotion Type",
-  "deleteEmotionTypeConfirmation": "Are you sure you want to delete {type}?"
+  "deleteEmotionTypeConfirmation": "Are you sure you want to delete {type}?",
+  "income_expense": "Income/Expense",
+  "noIncomeExpenseMessage": "No income or expense records available.",
+  "totalIncomeExpense": "Total Amount",
+  "editIncomeExpenseRecord": "Edit Income/Expense Record",
+  "addIncome": "Add Income",
+  "addExpense": "Add Expense",
+  "enterAmount": "Enter Amount",
+  "currency": "USD"
 }
