@@ -20,10 +20,15 @@ class IncomeExpenseCardWidget extends StatefulWidget {
 class _IncomeExpenseCardWidgetState extends State<IncomeExpenseCardWidget> {
   @override
   Widget build(BuildContext context) {
-    final totalAmount = widget.incomeExpenseData.fold<double>(
-      0.0,
-          (sum, item) => sum + item.amount,
-    );
+    final totalIncome = widget.incomeExpenseData
+        .where((item) => item.type == 'income')
+        .fold<double>(0.0, (sum, item) => sum + item.amount);
+
+    final totalExpense = widget.incomeExpenseData
+        .where((item) => item.type == 'expense')
+        .fold<double>(0.0, (sum, item) => sum + item.amount);
+
+    final totalAmount = totalIncome - totalExpense;
 
     final isNewRecord = widget.incomeExpenseData.isEmpty;
 
@@ -45,7 +50,15 @@ class _IncomeExpenseCardWidgetState extends State<IncomeExpenseCardWidget> {
                 children: [
                   Icon(Icons.account_balance_wallet, size: 40, color: Colors.white),
                   SizedBox(width: 12),
-                  Text(S.of(context).income_expense, style: CommonStyles.titleStyle),
+                  Expanded(
+                    child: Text(
+                      S.of(context).income_expense,
+                      style: CommonStyles.titleStyle,
+                      maxLines: 2,
+                      overflow: TextOverflow.visible,
+                      softWrap: true,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(height: 24),
@@ -64,35 +77,71 @@ class _IncomeExpenseCardWidgetState extends State<IncomeExpenseCardWidget> {
                   ),
                 )
               else ...[
-                // 💰 각 수입/지출 기록 출력
-                ...widget.incomeExpenseData.map((record) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 4,
-                        children: [
-                          Text(
-                            record.type,
-                            style: CommonStyles.smallTextStyle.copyWith(
-                              color: record.type == 'income' ? Colors.green : Colors.red,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "${record.amount.toStringAsFixed(2)} ${S.of(context).currency}",
-                            style: CommonStyles.smallTextStyle.copyWith(color: Colors.black54),
-                          ),
-                          if (record.description != null)
-                            Text(
-                              record.description!,
-                              style: CommonStyles.smallTextStyle.copyWith(color: Colors.black45),
-                            ),
-                        ],
-                      ),
-                      Divider(color: Colors.grey.shade300),
-                    ],
+                // 💰 수입 기록 출력
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    S.of(context).totalIncome,
+                    style: CommonStyles.smallTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                  ),
+                ),
+                ...widget.incomeExpenseData
+                    .where((record) => record.type == 'income')
+                    .map((record) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          record.description ?? S.of(context).unknown,
+                          style: CommonStyles.smallTextStyle.copyWith(color: Colors.black87),
+                        ),
+                        Text(
+                          "${record.amount.toStringAsFixed(2)} ${S.of(context).currency}",
+                          style: CommonStyles.smallTextStyle.copyWith(color: Colors.green),
+                        ),
+                        Divider(color: Colors.grey.shade300),
+                      ],
+                    ),
+                  );
+                }).toList(),
+
+                // 💸 지출 기록 출력
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Text(
+                    S.of(context).totalExpense,
+                    style: CommonStyles.smallTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
+                ),
+                ...widget.incomeExpenseData
+                    .where((record) => record.type == 'expense')
+                    .map((record) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          record.description ?? S.of(context).unknown,
+                          style: CommonStyles.smallTextStyle.copyWith(color: Colors.black87),
+                        ),
+                        Text(
+                          "${record.amount.toStringAsFixed(2)} ${S.of(context).currency}",
+                          style: CommonStyles.smallTextStyle.copyWith(color: Colors.red),
+                        ),
+                        Divider(color: Colors.grey.shade300),
+                      ],
+                    ),
                   );
                 }).toList(),
 

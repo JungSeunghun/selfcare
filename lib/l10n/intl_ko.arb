@@ -48,11 +48,15 @@
   "editEmotionTypeHint": "감정 유형 수정",
   "deleteEmotionTypeConfirmation": "{type}을(를) 삭제하시겠습니까?",
   "income_expense": "수입/지출",
-  "noIncomeExpenseMessage": "수입/지출 기록이 없습니다.",
+  "noIncomeExpenseMessage": "수입과 지출을 기록하며 목표를 향해 나아가요! 🚀\n작은 습관이 큰 성과로 이어집니다. 🌟",
   "totalIncomeExpense": "총 금액",
   "editIncomeExpenseRecord": "수입/지출 기록 편집",
   "addIncome": "수입 추가",
   "addExpense": "지출 추가",
   "enterAmount": "금액 입력",
-  "currency": "원"
+  "currency": "원",
+  "incomeExpenseTypeSelect": "수입 또는 지출 유형을 선택하세요",
+  "totalIncome": "총 수입",
+  "totalExpense": "총 지출",
+  "unknown": "알 수 없음"
 }

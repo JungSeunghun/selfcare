@@ -79,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterAmount": MessageLookupByLibrary.simpleMessage("Enter Amount"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hours": MessageLookupByLibrary.simpleMessage("h"),
+        "incomeExpenseTypeSelect": MessageLookupByLibrary.simpleMessage(
+            "Select an income or expense type"),
         "income_expense":
             MessageLookupByLibrary.simpleMessage("Income/Expense"),
         "intensityLabel": MessageLookupByLibrary.simpleMessage("points"),
@@ -86,7 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noEmotionTypes":
             MessageLookupByLibrary.simpleMessage("No emotion types available."),
         "noIncomeExpenseMessage": MessageLookupByLibrary.simpleMessage(
-            "No income or expense records available."),
+            "Track your finances to reach your goals! 🚀\nSmall steps lead to big results. 🌟"),
         "noWorkoutMessage": MessageLookupByLibrary.simpleMessage(
             "What kind of workout did you do today? 🏋️\nSmall movements lead to big changes! 💪"),
         "noWorkoutTypes":
@@ -97,10 +99,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "sleepMessage": MessageLookupByLibrary.simpleMessage(
             "How well did you sleep today? 💤\nHave a warm day! 🌞"),
         "sleepTimeLabel": MessageLookupByLibrary.simpleMessage("Sleep Time"),
+        "totalExpense": MessageLookupByLibrary.simpleMessage("Total Expense"),
+        "totalIncome": MessageLookupByLibrary.simpleMessage("Total Income"),
         "totalIncomeExpense":
             MessageLookupByLibrary.simpleMessage("Total Amount"),
         "totalWorkoutDuration":
             MessageLookupByLibrary.simpleMessage("Total Workout Duration"),
+        "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
         "wakeTimeLabel": MessageLookupByLibrary.simpleMessage("Wake Time"),
         "workout": MessageLookupByLibrary.simpleMessage("Workout"),
         "workoutRecordInput":

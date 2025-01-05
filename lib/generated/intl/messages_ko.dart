@@ -67,13 +67,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterAmount": MessageLookupByLibrary.simpleMessage("금액 입력"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "hours": MessageLookupByLibrary.simpleMessage("시간"),
+        "incomeExpenseTypeSelect":
+            MessageLookupByLibrary.simpleMessage("수입 또는 지출 유형을 선택하세요"),
         "income_expense": MessageLookupByLibrary.simpleMessage("수입/지출"),
         "intensityLabel": MessageLookupByLibrary.simpleMessage("점"),
         "minutes": MessageLookupByLibrary.simpleMessage("분"),
         "noEmotionTypes":
             MessageLookupByLibrary.simpleMessage("사용 가능한 감정 유형이 없습니다."),
-        "noIncomeExpenseMessage":
-            MessageLookupByLibrary.simpleMessage("수입/지출 기록이 없습니다."),
+        "noIncomeExpenseMessage": MessageLookupByLibrary.simpleMessage(
+            "수입과 지출을 기록하며 목표를 향해 나아가요! 🚀\n작은 습관이 큰 성과로 이어집니다. 🌟"),
         "noWorkoutMessage": MessageLookupByLibrary.simpleMessage(
             "오늘은 어떤 운동을\n했나요? 🏋️\n작은 움직임이 큰\n변화를 만듭니다! 💪"),
         "noWorkoutTypes": MessageLookupByLibrary.simpleMessage("운동 타입이 없습니다."),
@@ -83,8 +85,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "sleepMessage": MessageLookupByLibrary.simpleMessage(
             "오늘은 얼마나\n푹 잤나요? 💤\n따뜻한 하루 되세요! 🌞"),
         "sleepTimeLabel": MessageLookupByLibrary.simpleMessage("잤는 시간"),
+        "totalExpense": MessageLookupByLibrary.simpleMessage("총 지출"),
+        "totalIncome": MessageLookupByLibrary.simpleMessage("총 수입"),
         "totalIncomeExpense": MessageLookupByLibrary.simpleMessage("총 금액"),
         "totalWorkoutDuration": MessageLookupByLibrary.simpleMessage("총 운동 시간"),
+        "unknown": MessageLookupByLibrary.simpleMessage("알 수 없음"),
         "wakeTimeLabel": MessageLookupByLibrary.simpleMessage("일어난 시간"),
         "workout": MessageLookupByLibrary.simpleMessage("운동"),
         "workoutRecordInput": MessageLookupByLibrary.simpleMessage("운동 기록 입력"),

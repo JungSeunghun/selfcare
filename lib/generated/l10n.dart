@@ -500,10 +500,10 @@ class S {
     );
   }
 
-  /// `No income or expense records available.`
+  /// `Track your finances to reach your goals! 🚀\nSmall steps lead to big results. 🌟`
   String get noIncomeExpenseMessage {
     return Intl.message(
-      'No income or expense records available.',
+      'Track your finances to reach your goals! 🚀\nSmall steps lead to big results. 🌟',
       name: 'noIncomeExpenseMessage',
       desc: '',
       args: [],
@@ -565,6 +565,46 @@ class S {
     return Intl.message(
       'USD',
       name: 'currency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select an income or expense type`
+  String get incomeExpenseTypeSelect {
+    return Intl.message(
+      'Select an income or expense type',
+      name: 'incomeExpenseTypeSelect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Income`
+  String get totalIncome {
+    return Intl.message(
+      'Total Income',
+      name: 'totalIncome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Expense`
+  String get totalExpense {
+    return Intl.message(
+      'Total Expense',
+      name: 'totalExpense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message(
+      'Unknown',
+      name: 'unknown',
       desc: '',
       args: [],
     );

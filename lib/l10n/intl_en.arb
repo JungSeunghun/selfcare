@@ -48,11 +48,15 @@
   "editEmotionTypeHint": "Edit Emotion Type",
   "deleteEmotionTypeConfirmation": "Are you sure you want to delete {type}?",
   "income_expense": "Income/Expense",
-  "noIncomeExpenseMessage": "No income or expense records available.",
+  "noIncomeExpenseMessage": "Track your finances to reach your goals! 🚀\nSmall steps lead to big results. 🌟",
   "totalIncomeExpense": "Total Amount",
   "editIncomeExpenseRecord": "Edit Income/Expense Record",
   "addIncome": "Add Income",
   "addExpense": "Add Expense",
   "enterAmount": "Enter Amount",
-  "currency": "USD"
+  "currency": "USD",
+  "incomeExpenseTypeSelect": "Select an income or expense type",
+  "totalIncome": "Total Income",
+  "totalExpense": "Total Expense",
+  "unknown": "Unknown"
 }
