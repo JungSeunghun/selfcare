@@ -55,7 +55,7 @@ void showSleepInputDialog(BuildContext context, SleepRecord sleepData, Function(
                   backgroundColor: Color(0xFFAEDFF7),
                   shape: CommonStyles.dialogShape,
                 ),
-                child: Text(sleepData.id == null ? S.of(context).add : S.of(context).save), // "추가" 또는 "저장"
+                child: Text(sleepData.id == null ? S.of(context).save : S.of(context).save), // "추가" 또는 "저장"
               ),
             ],
           );

@@ -24,7 +24,7 @@
   "totalWorkoutDuration": "총 운동 시간",
   "editWorkoutRecord": "운동 기록 수정",
   "workoutTypeSelect": "운동 타입 선택",
-  "addWorkoutType": "운동 타입 추가",
+  "addWorkoutType": "새로운 운동 타입 추가",
   "workoutRecordInput": "운동 기록 입력",
   "durationInMinutes": "시간 (분)",
   "workoutTypeManagement": "운동 타입 관리",
@@ -35,5 +35,16 @@
   "deleteConfirmation": "삭제 확인",
   "deleteWorkoutTypeConfirmation": "{type}을(를) 삭제하시겠습니까?",
   "close": "닫기",
-  "delete": "삭제"
+  "delete": "삭제",
+  "emotion": "감정",
+  "emotionMessage": "오늘은 기분이 어떤가요? 😊\n스스로를 돌보는 따뜻한 시간을 가져보세요. 💙",
+  "intensityLabel": "점",
+  "editEmotionRecord": "감정 기록 수정",
+  "emotionTypeSelect": "감정 타입 선택",
+  "emotionRecordInput": "감정 기록 입력",
+  "emotionTypeManagement": "감정 유형 관리",
+  "noEmotionTypes": "사용 가능한 감정 유형이 없습니다.",
+  "addEmotionType": "새로운 감정 유형 추가",
+  "editEmotionTypeHint": "감정 유형 수정",
+  "deleteEmotionTypeConfirmation": "{type}을(를) 삭제하시겠습니까?"
 }

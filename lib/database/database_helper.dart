@@ -25,7 +25,7 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 6,
+      version: 1,
       onCreate: (db, version) async {
         // 테이블 생성
         await WorkoutTable.create(db);
@@ -37,13 +37,6 @@ class DatabaseHelper {
         await EmotionSeed.insertDefaultData(db);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 6) {
-          await WorkoutTable.create(db);
-          await SleepTable.create(db);
-          await EmotionTable.create(db);
-          await WorkoutSeed.insertDefaultData(db);
-          await EmotionSeed.insertDefaultData(db);
-        }
       },
     );
   }

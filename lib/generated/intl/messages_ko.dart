@@ -26,9 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(type) => "${type}을(를) 삭제하시겠습니까?";
 
+  static String m3(type) => "${type}을(를) 삭제하시겠습니까?";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "add": MessageLookupByLibrary.simpleMessage("추가"),
+        "addEmotionType": MessageLookupByLibrary.simpleMessage("새로운 감정 유형 추가"),
         "addNewWorkoutTypeHint":
             MessageLookupByLibrary.simpleMessage("새 운동 타입 입력"),
         "addSleepRecord": MessageLookupByLibrary.simpleMessage("새로운 수면 기록 추가"),
@@ -41,14 +44,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateHeader_year": m1,
         "delete": MessageLookupByLibrary.simpleMessage("삭제"),
         "deleteConfirmation": MessageLookupByLibrary.simpleMessage("삭제 확인"),
-        "deleteWorkoutTypeConfirmation": m2,
+        "deleteEmotionTypeConfirmation": m2,
+        "deleteWorkoutTypeConfirmation": m3,
         "durationInMinutes": MessageLookupByLibrary.simpleMessage("시간 (분)"),
+        "editEmotionRecord": MessageLookupByLibrary.simpleMessage("감정 기록 수정"),
+        "editEmotionTypeHint": MessageLookupByLibrary.simpleMessage("감정 유형 수정"),
         "editSleepRecord": MessageLookupByLibrary.simpleMessage("수면 기록 수정"),
         "editWorkoutRecord": MessageLookupByLibrary.simpleMessage("운동 기록 수정"),
         "editWorkoutTypeHint": MessageLookupByLibrary.simpleMessage("운동 타입 수정"),
+        "emotion": MessageLookupByLibrary.simpleMessage("감정"),
+        "emotionMessage": MessageLookupByLibrary.simpleMessage(
+            "오늘은 기분이 어떤가요? 😊\n스스로를 돌보는 따뜻한 시간을 가져보세요. 💙"),
+        "emotionRecordInput": MessageLookupByLibrary.simpleMessage("감정 기록 입력"),
+        "emotionTypeManagement":
+            MessageLookupByLibrary.simpleMessage("감정 유형 관리"),
+        "emotionTypeSelect": MessageLookupByLibrary.simpleMessage("감정 타입 선택"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "hours": MessageLookupByLibrary.simpleMessage("시간"),
+        "intensityLabel": MessageLookupByLibrary.simpleMessage("점"),
         "minutes": MessageLookupByLibrary.simpleMessage("분"),
+        "noEmotionTypes":
+            MessageLookupByLibrary.simpleMessage("사용 가능한 감정 유형이 없습니다."),
         "noWorkoutMessage": MessageLookupByLibrary.simpleMessage(
             "오늘은 어떤 운동을\n했나요? 🏋️\n작은 움직임이 큰\n변화를 만듭니다! 💪"),
         "noWorkoutTypes": MessageLookupByLibrary.simpleMessage("운동 타입이 없습니다."),

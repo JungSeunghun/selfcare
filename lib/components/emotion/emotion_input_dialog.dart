@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
-import '../../models/workout_record_model.dart';
-import '../../models/workout_type_model.dart';
-import '../../services/workout_service.dart';
-import '../../services/workout_type_service.dart';
-import '../../generated/l10n.dart'; // 다국어 처리 S 클래스 사용
-import '../../common/common_styles.dart'; // 공통 스타일 사용
-import 'workout_type_settings_dialog.dart';
+import '../../models/emotion_model.dart';
+import '../../models/emotion_type_model.dart';
+import '../../services/emotion_service.dart';
+import '../../services/emotion_type_service.dart';
+import '../../common/common_styles.dart';
+import '../../generated/l10n.dart';
+import 'emotion_type_settings_dialog.dart'; // S 클래스 사용
 
-void showWorkoutInputDialog(
+void showEmotionInputDialog(
     BuildContext context,
-    List<WorkoutRecord> workoutData,
-    Function(List<WorkoutRecord>) onSave,
+    List<Emotion> emotionData,
+    Function(List<Emotion>) onSave,
     ) async {
-  final WorkoutTypeService workoutTypeService = WorkoutTypeService();
-  final WorkoutService workoutService = WorkoutService();
+  final EmotionTypeService emotionTypeService = EmotionTypeService();
+  final EmotionService emotionService = EmotionService();
   final locale = Localizations.localeOf(context).languageCode;
-  final List<WorkoutType> workoutTypes = await workoutTypeService.getWorkoutTypes(locale);
+  final List<EmotionType> emotionTypes = await emotionTypeService.getEmotionTypes(locale);
 
-  final Map<String, bool> toggledWorkouts = {
-    for (var type in workoutTypes) type.name: workoutData.any((workout) => workout.workoutType == type.name),
+  final Map<String, bool> toggledEmotions = {
+    for (var type in emotionTypes) type.name: emotionData.any((emotion) => emotion.emotionType == type.name),
   };
 
-  final List<WorkoutRecord> tempWorkoutData = List.from(workoutData);
-  final List<TextEditingController> durationControllers = List.generate(
-    tempWorkoutData.length,
-        (index) => TextEditingController(text: tempWorkoutData[index].duration.toString()),
+  final List<Emotion> tempEmotionData = List.from(emotionData);
+  final List<TextEditingController> intensityControllers = List.generate(
+    tempEmotionData.length,
+        (index) => TextEditingController(text: tempEmotionData[index].intensity.toString()),
   );
 
-  void _toggleWorkout(String workoutType, bool isActive) {
+  void _toggleEmotion(String emotionType, bool isActive) {
     if (isActive) {
-      tempWorkoutData.add(WorkoutRecord(id: null, date: DateTime.now().toString(), workoutType: workoutType, duration: 0));
-      durationControllers.add(TextEditingController());
+      tempEmotionData.add(Emotion(id: null, date: DateTime.now().toString(), emotionType: emotionType, intensity: 0));
+      intensityControllers.add(TextEditingController());
     } else {
-      final index = tempWorkoutData.indexWhere((workout) => workout.workoutType == workoutType);
+      final index = tempEmotionData.indexWhere((emotion) => emotion.emotionType == emotionType);
       if (index != -1) {
-        tempWorkoutData.removeAt(index);
-        durationControllers.removeAt(index);
+        tempEmotionData.removeAt(index);
+        intensityControllers.removeAt(index);
       }
     }
   }
@@ -49,10 +49,10 @@ void showWorkoutInputDialog(
             shape: CommonStyles.dialogShape,
             title: Row(
               children: [
-                Icon(Icons.fitness_center, color: Color(0xFFAEDFF7)),
+                Icon(Icons.sentiment_satisfied, color: Color(0xFFAEDFF7)),
                 SizedBox(width: 8),
                 Text(
-                  S.of(context).editWorkoutRecord,
+                  S.of(context).editEmotionRecord,
                   style: CommonStyles.titleStyle.copyWith(fontSize: 18),
                 ),
               ],
@@ -63,32 +63,32 @@ void showWorkoutInputDialog(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(S.of(context).workoutTypeSelect, style: CommonStyles.smallTextStyle),
+                    Text(S.of(context).emotionTypeSelect, style: CommonStyles.smallTextStyle),
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
                       children: [
-                        ...toggledWorkouts.keys.map((workout) {
+                        ...toggledEmotions.keys.map((emotionType) {
                           return FilterChip(
-                            label: Text(workout),
-                            selected: toggledWorkouts[workout] ?? false,
+                            label: Text(emotionType),
+                            selected: toggledEmotions[emotionType] ?? false,
                             onSelected: (isSelected) {
                               setState(() {
-                                toggledWorkouts[workout] = isSelected;
-                                _toggleWorkout(workout, isSelected);
+                                toggledEmotions[emotionType] = isSelected;
+                                _toggleEmotion(emotionType, isSelected);
                               });
                             },
                             selectedColor: Colors.blueAccent.withOpacity(0.3),
                           );
                         }).toList(),
                         FilterChip(
-                          label: Text(S.of(context).addWorkoutType),
+                          label: Text(S.of(context).addEmotionType),
                           backgroundColor: Colors.grey[300],
                           onSelected: (isSelected) {
                             Navigator.pop(context);
-                            showWorkoutTypeSettingsDialog(
+                            showEmotionTypeSettingsDialog(
                               context,
-                              workoutData: workoutData,
+                              emotionData: emotionData,
                               onSave: onSave,
                             );
                           },
@@ -96,11 +96,11 @@ void showWorkoutInputDialog(
                       ],
                     ),
                     SizedBox(height: 16),
-                    Text(S.of(context).workoutRecordInput, style: CommonStyles.smallTextStyle),
+                    Text(S.of(context).emotionRecordInput, style: CommonStyles.smallTextStyle),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: tempWorkoutData.length,
+                      itemCount: tempEmotionData.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 6),
@@ -109,36 +109,36 @@ void showWorkoutInputDialog(
                               Expanded(
                                 flex: 3,
                                 child: Text(
-                                  tempWorkoutData[index].workoutType,
+                                  tempEmotionData[index].emotionType,
                                   style: TextStyle(fontSize: 16),
                                 ),
                               ),
                               Expanded(
                                 flex: 2,
                                 child: TextField(
-                                  controller: durationControllers[index],
+                                  controller: intensityControllers[index],
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
-                                    hintText: S.of(context).durationInMinutes,
+                                    hintText: S.of(context).intensityLabel,
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                                   ),
                                   onChanged: (value) {
-                                    final int duration = int.tryParse(value) ?? 0;
-                                    tempWorkoutData[index] = tempWorkoutData[index].copyWith(duration: duration);
+                                    final int intensity = int.tryParse(value) ?? 0;
+                                    tempEmotionData[index] = tempEmotionData[index].copyWith(intensity: intensity);
                                   },
                                 ),
                               ),
                               IconButton(
                                 icon: Icon(Icons.delete, color: Colors.red),
                                 onPressed: () {
-                                  if (tempWorkoutData[index].id != null) {
-                                    workoutService.deleteWorkoutRecord(tempWorkoutData[index].id!);
+                                  if (tempEmotionData[index].id != null) {
+                                    emotionService.deleteEmotion(tempEmotionData[index].id!);
                                   }
                                   setState(() {
-                                    toggledWorkouts[tempWorkoutData[index].workoutType] = false;
-                                    tempWorkoutData.removeAt(index);
-                                    durationControllers.removeAt(index);
+                                    toggledEmotions[tempEmotionData[index].emotionType] = false;
+                                    tempEmotionData.removeAt(index);
+                                    intensityControllers.removeAt(index);
                                   });
                                 },
                               ),
@@ -160,18 +160,18 @@ void showWorkoutInputDialog(
               ),
               ElevatedButton(
                 onPressed: () async {
-                  for (int i = 0; i < tempWorkoutData.length; i++) {
-                    tempWorkoutData[i] = tempWorkoutData[i].copyWith(
-                      duration: int.tryParse(durationControllers[i].text) ?? 0,
+                  for (int i = 0; i < tempEmotionData.length; i++) {
+                    tempEmotionData[i] = tempEmotionData[i].copyWith(
+                      intensity: int.tryParse(intensityControllers[i].text) ?? 0,
                     );
                   }
 
-                  List<WorkoutRecord> savedWorkouts = [];
-                  for (var workout in tempWorkoutData) {
-                    savedWorkouts.add(workout);
+                  List<Emotion> savedEmotions = [];
+                  for (var emotion in tempEmotionData) {
+                    savedEmotions.add(emotion);
                   }
 
-                  onSave(savedWorkouts);
+                  onSave(savedEmotions);
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(

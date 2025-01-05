@@ -379,6 +379,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Emotion`
+  String get emotion {
+    return Intl.message(
+      'Emotion',
+      name: 'emotion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How are you feeling today? 😊\nTake a moment to reflect and care for yourself. 💙`
+  String get emotionMessage {
+    return Intl.message(
+      'How are you feeling today? 😊\nTake a moment to reflect and care for yourself. 💙',
+      name: 'emotionMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `points`
+  String get intensityLabel {
+    return Intl.message(
+      'points',
+      name: 'intensityLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Emotion Record`
+  String get editEmotionRecord {
+    return Intl.message(
+      'Edit Emotion Record',
+      name: 'editEmotionRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Emotion Type`
+  String get emotionTypeSelect {
+    return Intl.message(
+      'Select Emotion Type',
+      name: 'emotionTypeSelect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emotion Record Input`
+  String get emotionRecordInput {
+    return Intl.message(
+      'Emotion Record Input',
+      name: 'emotionRecordInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emotion Type Management`
+  String get emotionTypeManagement {
+    return Intl.message(
+      'Emotion Type Management',
+      name: 'emotionTypeManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No emotion types available.`
+  String get noEmotionTypes {
+    return Intl.message(
+      'No emotion types available.',
+      name: 'noEmotionTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Emotion Type`
+  String get addEmotionType {
+    return Intl.message(
+      'Add New Emotion Type',
+      name: 'addEmotionType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Emotion Type`
+  String get editEmotionTypeHint {
+    return Intl.message(
+      'Edit Emotion Type',
+      name: 'editEmotionTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete {type}?`
+  String deleteEmotionTypeConfirmation(Object type) {
+    return Intl.message(
+      'Are you sure you want to delete $type?',
+      name: 'deleteEmotionTypeConfirmation',
+      desc: '',
+      args: [type],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

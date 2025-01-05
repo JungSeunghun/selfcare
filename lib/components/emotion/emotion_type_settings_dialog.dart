@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import '../../models/workout_record_model.dart';
-import '../../models/workout_type_model.dart';
-import '../../services/workout_type_service.dart';
+import '../../models/emotion_model.dart';
+import '../../models/emotion_type_model.dart';
+import '../../services/emotion_type_service.dart';
 import '../../common/common_styles.dart';
 import '../../generated/l10n.dart'; // 다국어 S 클래스 사용
-import 'workout_input_dialog.dart';
 
-void showWorkoutTypeSettingsDialog(
+void showEmotionTypeSettingsDialog(
     BuildContext context, {
-      required List<WorkoutRecord> workoutData,
-      required Function(List<WorkoutRecord>) onSave,
+      required List<Emotion> emotionData,
+      required Function(List<Emotion>) onSave,
     }) {
-  final WorkoutTypeService workoutTypeService = WorkoutTypeService();
-  TextEditingController workoutTypeController = TextEditingController();
+  final EmotionTypeService emotionTypeService = EmotionTypeService();
+  TextEditingController emotionTypeController = TextEditingController();
   final locale = Localizations.localeOf(context).languageCode;
 
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return FutureBuilder<List<WorkoutType>>(
-        future: workoutTypeService.getWorkoutTypes(locale),
+      return FutureBuilder<List<EmotionType>>(
+        future: emotionTypeService.getEmotionTypes(locale),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -33,17 +32,16 @@ void showWorkoutTypeSettingsDialog(
                   Icon(Icons.category, color: Color(0xFFAEDFF7)),
                   SizedBox(width: 8),
                   Text(
-                    S.of(context).workoutTypeManagement,
+                    S.of(context).emotionTypeManagement,
                     style: CommonStyles.titleStyle.copyWith(fontSize: 18),
                   ),
                 ],
               ),
-              content: Text(S.of(context).noWorkoutTypes),
+              content: Text(S.of(context).noEmotionTypes),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    showWorkoutInputDialog(context, workoutData, onSave);
                   },
                   child: Text(S.of(context).close, style: TextStyle(color: Colors.grey)),
                 ),
@@ -51,7 +49,7 @@ void showWorkoutTypeSettingsDialog(
             );
           }
 
-          List<WorkoutType> workoutTypes = snapshot.data!;
+          List<EmotionType> emotionTypes = snapshot.data!;
 
           return StatefulBuilder(
             builder: (context, setState) {
@@ -62,7 +60,7 @@ void showWorkoutTypeSettingsDialog(
                     Icon(Icons.category, color: Color(0xFFAEDFF7)),
                     SizedBox(width: 8),
                     Text(
-                      S.of(context).workoutTypeManagement,
+                      S.of(context).emotionTypeManagement,
                       style: CommonStyles.titleStyle.copyWith(fontSize: 18),
                     ),
                   ],
@@ -76,9 +74,9 @@ void showWorkoutTypeSettingsDialog(
                         children: [
                           Expanded(
                             child: TextField(
-                              controller: workoutTypeController,
+                              controller: emotionTypeController,
                               decoration: InputDecoration(
-                                hintText: S.of(context).addWorkoutType,
+                                hintText: S.of(context).addEmotionType,
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(8),
                                   borderSide: BorderSide(color: Colors.grey.shade300),
@@ -90,11 +88,11 @@ void showWorkoutTypeSettingsDialog(
                           SizedBox(width: 8),
                           ElevatedButton(
                             onPressed: () async {
-                              final newType = workoutTypeController.text.trim();
+                              final newType = emotionTypeController.text.trim();
                               if (newType.isNotEmpty) {
-                                await workoutTypeService.addWorkoutType(newType, locale);
-                                workoutTypeController.clear();
-                                workoutTypes = await workoutTypeService.getWorkoutTypes(locale);
+                                await emotionTypeService.addEmotionType(newType, locale);
+                                emotionTypeController.clear();
+                                emotionTypes = await emotionTypeService.getEmotionTypes(locale);
                                 setState(() {});
                               }
                             },
@@ -110,9 +108,9 @@ void showWorkoutTypeSettingsDialog(
                       SizedBox(
                         height: 300,
                         child: ListView.builder(
-                          itemCount: workoutTypes.length,
+                          itemCount: emotionTypes.length,
                           itemBuilder: (context, index) {
-                            final type = workoutTypes[index];
+                            final type = emotionTypes[index];
                             TextEditingController editController = TextEditingController(text: type.name);
 
                             return Padding(
@@ -123,7 +121,7 @@ void showWorkoutTypeSettingsDialog(
                                     child: TextField(
                                       controller: editController,
                                       decoration: InputDecoration(
-                                        hintText: S.of(context).addNewWorkoutTypeHint,
+                                        hintText: S.of(context).editEmotionTypeHint,
                                         border: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(8),
                                           borderSide: BorderSide(color: Colors.grey.shade300),
@@ -132,10 +130,10 @@ void showWorkoutTypeSettingsDialog(
                                       ),
                                       onSubmitted: (newValue) async {
                                         if (newValue.trim().isNotEmpty && newValue != type.name) {
-                                          await workoutTypeService.updateWorkoutType(
-                                            WorkoutType(id: type.id, name: newValue.trim(), locale: locale),
+                                          await emotionTypeService.updateEmotionType(
+                                            EmotionType(id: type.id, name: newValue.trim(), locale: locale),
                                           );
-                                          workoutTypes = await workoutTypeService.getWorkoutTypes(locale);
+                                          emotionTypes = await emotionTypeService.getEmotionTypes(locale);
                                           setState(() {});
                                         }
                                       },
@@ -148,8 +146,8 @@ void showWorkoutTypeSettingsDialog(
                                         context,
                                         type,
                                             () async {
-                                          await workoutTypeService.deleteWorkoutType(type.id!);
-                                          workoutTypes = await workoutTypeService.getWorkoutTypes(locale);
+                                          await emotionTypeService.deleteEmotionType(type.id!);
+                                          emotionTypes = await emotionTypeService.getEmotionTypes(locale);
                                           setState(() {});
                                         },
                                       );
@@ -168,7 +166,6 @@ void showWorkoutTypeSettingsDialog(
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      showWorkoutInputDialog(context, workoutData, onSave);
                     },
                     child: Text(S.of(context).close, style: TextStyle(color: Colors.grey)),
                   ),
@@ -184,7 +181,7 @@ void showWorkoutTypeSettingsDialog(
 
 void _showDeleteConfirmationDialog(
     BuildContext context,
-    WorkoutType type,
+    EmotionType type,
     VoidCallback onDelete,
     ) {
   showDialog(
@@ -193,7 +190,7 @@ void _showDeleteConfirmationDialog(
       return AlertDialog(
         shape: CommonStyles.dialogShape,
         title: Text(S.of(context).deleteConfirmation),
-        content: Text("${type.name} ${S.of(context).deleteWorkoutTypeConfirmation}"),
+        content: Text("${type.name} ${S.of(context).deleteEmotionTypeConfirmation}"),
         actions: [
           TextButton(
             onPressed: () {

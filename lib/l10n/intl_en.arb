@@ -24,7 +24,7 @@
   "totalWorkoutDuration": "Total Workout Duration",
   "editWorkoutRecord": "Edit Workout Record",
   "workoutTypeSelect": "Select Workout Type",
-  "addWorkoutType": "Add Workout Type",
+  "addWorkoutType": "Add New Workout Type",
   "workoutRecordInput": "Workout Record Input",
   "durationInMinutes": "Duration (minutes)",
   "workoutTypeManagement": "Workout Type Management",
@@ -35,5 +35,16 @@
   "deleteConfirmation": "Delete Confirmation",
   "deleteWorkoutTypeConfirmation": "Are you sure you want to delete {type}?",
   "close": "Close",
-  "delete": "Delete"
+  "delete": "Delete",
+  "emotion": "Emotion",
+  "emotionMessage": "How are you feeling today? 😊\nTake a moment to reflect and care for yourself. 💙",
+  "intensityLabel": "points",
+  "editEmotionRecord": "Edit Emotion Record",
+  "emotionTypeSelect": "Select Emotion Type",
+  "emotionRecordInput": "Emotion Record Input",
+  "emotionTypeManagement": "Emotion Type Management",
+  "noEmotionTypes": "No emotion types available.",
+  "addEmotionType": "Add New Emotion Type",
+  "editEmotionTypeHint": "Edit Emotion Type",
+  "deleteEmotionTypeConfirmation": "Are you sure you want to delete {type}?"
 }

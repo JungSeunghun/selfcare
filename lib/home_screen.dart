@@ -5,8 +5,10 @@ import 'components/pinterest_grid_view_builder.dart';
 import 'components/date_header.dart';
 import 'services/sleep_service.dart';
 import 'services/workout_service.dart';
+import 'services/emotion_service.dart';
 import 'models/sleep_record_model.dart';
 import 'models/workout_record_model.dart';
+import 'models/emotion_model.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,14 +20,17 @@ class _HomeScreenState extends State<HomeScreen> {
   final Map<String, IconData> icons = {
     S.current.sleep: Ionicons.bed_outline,
     S.current.workout: Ionicons.fitness_outline,
+    S.current.emotion: Ionicons.happy_outline,
   };
 
   final SleepService _sleepService = SleepService();
   final WorkoutService _workoutService = WorkoutService();
+  final EmotionService _emotionService = EmotionService();
 
   String selectedDate = DateFormat('yMd').format(DateTime.now());
   SleepRecord? sleepData;
   List<WorkoutRecord> workoutData = [];
+  List<Emotion> emotionData = [];
   bool isLoading = false;
 
   @override
@@ -41,10 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final sleepRecord = await _sleepService.getSleepRecordByDate(date);
     final workouts = await _workoutService.getWorkoutsByDate(date);
+    final emotions = await _emotionService.getEmotionsByDate(date);
 
     setState(() {
       sleepData = sleepRecord;
       workoutData = workouts;
+      emotionData = emotions;
       isLoading = false;
     });
   }
@@ -58,6 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void _updateWorkoutData(List<WorkoutRecord> updatedRecords) {
     setState(() {
       workoutData = updatedRecords;
+    });
+  }
+
+  void _updateEmotionData(List<Emotion> updatedRecords) {
+    setState(() {
+      emotionData = updatedRecords;
     });
   }
 
@@ -85,12 +98,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? PinterestGridViewBuilder(
                     sleepData: sleepData!,
                     workoutDataList: workoutData,
+                    emotionDataList: emotionData,
                     icons: icons,
                     sleepService: _sleepService,
                     workoutService: _workoutService,
+                    emotionService: _emotionService,
                     selectedDate: selectedDate,
                     onUpdateSleep: _updateSleepData,
                     onUpdateWorkout: _updateWorkoutData,
+                    onUpdateEmotion: _updateEmotionData,
                   )
                       : Center(child: CircularProgressIndicator()),
                 ),

@@ -4,18 +4,8 @@ import '../repositories/workout_type_repository.dart';
 class WorkoutTypeService {
   final WorkoutTypeRepository _workoutTypeRepository = WorkoutTypeRepository();
 
-  /// 📋 모든 운동 타입 가져오기
-  Future<List<WorkoutType>> getAllWorkoutTypes() async {
-    try {
-      return await _workoutTypeRepository.getWorkoutTypesByLocale('en'); // 기본 로케일 설정
-    } catch (e) {
-      print("Error fetching workout types: $e");
-      return [];
-    }
-  }
-
   /// 특정 로케일에 따른 운동 타입 가져오기
-  Future<List<WorkoutType>> getWorkoutTypesByLocale(String locale) async {
+  Future<List<WorkoutType>> getWorkoutTypes(String locale) async {
     try {
       return await _workoutTypeRepository.getWorkoutTypesByLocale(locale);
     } catch (e) {

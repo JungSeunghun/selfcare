@@ -31,7 +31,7 @@ class CommonStyles {
   );
 
   static TextStyle largeTextStyle = TextStyle(
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: FontWeight.bold,
     color: Colors.black87,
   );
