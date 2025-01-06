@@ -34,7 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "addEmotionType":
             MessageLookupByLibrary.simpleMessage("Add New Emotion Type"),
         "addExpense": MessageLookupByLibrary.simpleMessage("Add Expense"),
+        "addExpenseType":
+            MessageLookupByLibrary.simpleMessage("Add Expense Type"),
         "addIncome": MessageLookupByLibrary.simpleMessage("Add Income"),
+        "addIncomeExpenseType":
+            MessageLookupByLibrary.simpleMessage("Add new type"),
+        "addIncomeType":
+            MessageLookupByLibrary.simpleMessage("Add Income Type"),
         "addNewWorkoutTypeHint":
             MessageLookupByLibrary.simpleMessage("Enter a new workout type"),
         "addSleepRecord":
@@ -52,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteConfirmation":
             MessageLookupByLibrary.simpleMessage("Delete Confirmation"),
         "deleteEmotionTypeConfirmation": m2,
+        "deleteIncomeExpenseTypeConfirmation":
+            MessageLookupByLibrary.simpleMessage(
+                "Do you want to delete this type?"),
         "deleteWorkoutTypeConfirmation": m3,
         "durationInMinutes":
             MessageLookupByLibrary.simpleMessage("Duration (minutes)"),
@@ -59,8 +68,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edit Emotion Record"),
         "editEmotionTypeHint":
             MessageLookupByLibrary.simpleMessage("Edit Emotion Type"),
+        "editExpenseTypeHint":
+            MessageLookupByLibrary.simpleMessage("Edit expense type"),
         "editIncomeExpenseRecord":
             MessageLookupByLibrary.simpleMessage("Edit Income/Expense Record"),
+        "editIncomeExpenseTypeHint":
+            MessageLookupByLibrary.simpleMessage("Edit type name"),
+        "editIncomeTypeHint":
+            MessageLookupByLibrary.simpleMessage("Edit income type"),
         "editSleepRecord":
             MessageLookupByLibrary.simpleMessage("Edit Sleep Record"),
         "editWorkoutRecord":
@@ -79,16 +94,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterAmount": MessageLookupByLibrary.simpleMessage("Enter Amount"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hours": MessageLookupByLibrary.simpleMessage("h"),
+        "incomeExpenseTypeManagement":
+            MessageLookupByLibrary.simpleMessage("Manage Income/Expense Types"),
         "incomeExpenseTypeSelect": MessageLookupByLibrary.simpleMessage(
             "Select an income or expense type"),
         "income_expense":
             MessageLookupByLibrary.simpleMessage("Income/Expense"),
         "intensityLabel": MessageLookupByLibrary.simpleMessage("points"),
+        "manageExpenseTypes":
+            MessageLookupByLibrary.simpleMessage("Manage Expense Types"),
+        "manageIncomeTypes":
+            MessageLookupByLibrary.simpleMessage("Manage Income Types"),
         "minutes": MessageLookupByLibrary.simpleMessage("m"),
         "noEmotionTypes":
             MessageLookupByLibrary.simpleMessage("No emotion types available."),
+        "noExpenseTypes":
+            MessageLookupByLibrary.simpleMessage("No expense types available."),
         "noIncomeExpenseMessage": MessageLookupByLibrary.simpleMessage(
             "Track your finances to reach your goals! 🚀\nSmall steps lead to big results. 🌟"),
+        "noIncomeExpenseTypes": MessageLookupByLibrary.simpleMessage(
+            "No income/expense types available."),
+        "noIncomeTypes":
+            MessageLookupByLibrary.simpleMessage("No income types available."),
         "noWorkoutMessage": MessageLookupByLibrary.simpleMessage(
             "What kind of workout did you do today? 🏋️\nSmall movements lead to big changes! 💪"),
         "noWorkoutTypes":

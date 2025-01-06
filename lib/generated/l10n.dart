@@ -609,6 +609,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Manage Income/Expense Types`
+  String get incomeExpenseTypeManagement {
+    return Intl.message(
+      'Manage Income/Expense Types',
+      name: 'incomeExpenseTypeManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No income/expense types available.`
+  String get noIncomeExpenseTypes {
+    return Intl.message(
+      'No income/expense types available.',
+      name: 'noIncomeExpenseTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new type`
+  String get addIncomeExpenseType {
+    return Intl.message(
+      'Add new type',
+      name: 'addIncomeExpenseType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit type name`
+  String get editIncomeExpenseTypeHint {
+    return Intl.message(
+      'Edit type name',
+      name: 'editIncomeExpenseTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to delete this type?`
+  String get deleteIncomeExpenseTypeConfirmation {
+    return Intl.message(
+      'Do you want to delete this type?',
+      name: 'deleteIncomeExpenseTypeConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage Income Types`
+  String get manageIncomeTypes {
+    return Intl.message(
+      'Manage Income Types',
+      name: 'manageIncomeTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage Expense Types`
+  String get manageExpenseTypes {
+    return Intl.message(
+      'Manage Expense Types',
+      name: 'manageExpenseTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No income types available.`
+  String get noIncomeTypes {
+    return Intl.message(
+      'No income types available.',
+      name: 'noIncomeTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No expense types available.`
+  String get noExpenseTypes {
+    return Intl.message(
+      'No expense types available.',
+      name: 'noExpenseTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Income Type`
+  String get addIncomeType {
+    return Intl.message(
+      'Add Income Type',
+      name: 'addIncomeType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Expense Type`
+  String get addExpenseType {
+    return Intl.message(
+      'Add Expense Type',
+      name: 'addExpenseType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit income type`
+  String get editIncomeTypeHint {
+    return Intl.message(
+      'Edit income type',
+      name: 'editIncomeTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit expense type`
+  String get editExpenseTypeHint {
+    return Intl.message(
+      'Edit expense type',
+      name: 'editExpenseTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

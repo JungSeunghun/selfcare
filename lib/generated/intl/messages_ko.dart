@@ -33,7 +33,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("추가"),
         "addEmotionType": MessageLookupByLibrary.simpleMessage("새로운 감정 유형 추가"),
         "addExpense": MessageLookupByLibrary.simpleMessage("지출 추가"),
+        "addExpenseType": MessageLookupByLibrary.simpleMessage("지출 유형 추가"),
         "addIncome": MessageLookupByLibrary.simpleMessage("수입 추가"),
+        "addIncomeExpenseType": MessageLookupByLibrary.simpleMessage("새 유형 추가"),
+        "addIncomeType": MessageLookupByLibrary.simpleMessage("수입 유형 추가"),
         "addNewWorkoutTypeHint":
             MessageLookupByLibrary.simpleMessage("새 운동 타입 입력"),
         "addSleepRecord": MessageLookupByLibrary.simpleMessage("새로운 수면 기록 추가"),
@@ -48,12 +51,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("삭제"),
         "deleteConfirmation": MessageLookupByLibrary.simpleMessage("삭제 확인"),
         "deleteEmotionTypeConfirmation": m2,
+        "deleteIncomeExpenseTypeConfirmation":
+            MessageLookupByLibrary.simpleMessage("이 유형을 삭제하시겠습니까?"),
         "deleteWorkoutTypeConfirmation": m3,
         "durationInMinutes": MessageLookupByLibrary.simpleMessage("시간 (분)"),
         "editEmotionRecord": MessageLookupByLibrary.simpleMessage("감정 기록 수정"),
         "editEmotionTypeHint": MessageLookupByLibrary.simpleMessage("감정 유형 수정"),
+        "editExpenseTypeHint": MessageLookupByLibrary.simpleMessage("지출 유형 편집"),
         "editIncomeExpenseRecord":
             MessageLookupByLibrary.simpleMessage("수입/지출 기록 편집"),
+        "editIncomeExpenseTypeHint":
+            MessageLookupByLibrary.simpleMessage("유형 이름 편집"),
+        "editIncomeTypeHint": MessageLookupByLibrary.simpleMessage("수입 유형 편집"),
         "editSleepRecord": MessageLookupByLibrary.simpleMessage("수면 기록 수정"),
         "editWorkoutRecord": MessageLookupByLibrary.simpleMessage("운동 기록 수정"),
         "editWorkoutTypeHint": MessageLookupByLibrary.simpleMessage("운동 타입 수정"),
@@ -67,15 +76,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterAmount": MessageLookupByLibrary.simpleMessage("금액 입력"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "hours": MessageLookupByLibrary.simpleMessage("시간"),
+        "incomeExpenseTypeManagement":
+            MessageLookupByLibrary.simpleMessage("수입/지출 유형 관리"),
         "incomeExpenseTypeSelect":
             MessageLookupByLibrary.simpleMessage("수입 또는 지출 유형을 선택하세요"),
         "income_expense": MessageLookupByLibrary.simpleMessage("수입/지출"),
         "intensityLabel": MessageLookupByLibrary.simpleMessage("점"),
+        "manageExpenseTypes": MessageLookupByLibrary.simpleMessage("지출 유형 관리"),
+        "manageIncomeTypes": MessageLookupByLibrary.simpleMessage("수입 유형 관리"),
         "minutes": MessageLookupByLibrary.simpleMessage("분"),
         "noEmotionTypes":
             MessageLookupByLibrary.simpleMessage("사용 가능한 감정 유형이 없습니다."),
+        "noExpenseTypes":
+            MessageLookupByLibrary.simpleMessage("등록된 지출 유형이 없습니다."),
         "noIncomeExpenseMessage": MessageLookupByLibrary.simpleMessage(
             "수입과 지출을 기록하며 목표를 향해 나아가요! 🚀\n작은 습관이 큰 성과로 이어집니다. 🌟"),
+        "noIncomeExpenseTypes":
+            MessageLookupByLibrary.simpleMessage("등록된 수입/지출 유형이 없습니다."),
+        "noIncomeTypes":
+            MessageLookupByLibrary.simpleMessage("등록된 수입 유형이 없습니다."),
         "noWorkoutMessage": MessageLookupByLibrary.simpleMessage(
             "오늘은 어떤 운동을\n했나요? 🏋️\n작은 움직임이 큰\n변화를 만듭니다! 💪"),
         "noWorkoutTypes": MessageLookupByLibrary.simpleMessage("운동 타입이 없습니다."),

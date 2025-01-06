@@ -5,6 +5,7 @@ import '../../services/income_expense_service.dart';
 import '../../services/income_expense_type_service.dart';
 import '../../generated/l10n.dart'; // 다국어 처리 S 클래스 사용
 import '../../common/common_styles.dart'; // 공통 스타일 사용
+import 'income_expense_type_setting_dialog.dart'; // 타입 설정 다이얼로그 추가
 
 void showIncomeExpenseInputDialog(
     BuildContext context,
@@ -78,29 +79,59 @@ void showIncomeExpenseInputDialog(
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
-                      children: incomeTypes.map((type) {
-                        final isSelected = tempIncomeExpenseData.any((record) => record.description == type.name);
-                        return FilterChip(
-                          label: Text(type.name),
-                          selected: isSelected,
+                      children: [
+                        ...incomeTypes.map((type) {
+                          final isSelected = tempIncomeExpenseData.any((record) => record.description == type.name);
+                          return FilterChip(
+                            label: Text(type.name),
+                            selected: isSelected,
+                            onSelected: (isSelected) {
+                              setState(() {
+                                if (isSelected) {
+                                  _addIncomeExpenseRecord('income', type.name);
+                                } else {
+                                  _removeIncomeExpenseRecord(type.name);
+                                }
+                              });
+                            },
+                            selectedColor: Colors.green.withOpacity(0.3),
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                color: Colors.green.withOpacity(0.3),
+                                width: 1.5,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                        // 수입 타입 관리 버튼
+                        FilterChip(
+                          label: Text(S.of(context).manageIncomeTypes),
+                          backgroundColor: Colors.grey[300],
                           onSelected: (isSelected) {
-                            setState(() {
-                              if (isSelected) {
-                                _addIncomeExpenseRecord('income', type.name);
-                              } else {
-                                _removeIncomeExpenseRecord(type.name);
-                              }
-                            });
+                            Navigator.pop(context);
+                            showIncomeExpenseTypeSettingsDialog(
+                              context,
+                              onUpdate: () {
+                                Navigator.pop(context);
+                                showIncomeExpenseInputDialog(
+                                  context,
+                                  tempIncomeExpenseData,
+                                  onSave,
+                                );
+                              },
+                              category: 'income',
+                              incomeExpenseData: tempIncomeExpenseData,
+                              onSave: onSave,
+                            );
                           },
-                          selectedColor: Colors.green.withOpacity(0.3),
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.green.withOpacity(0.3),
+                              color: Colors.grey.withOpacity(0.3),
                               width: 1.5,
                             ),
                           ),
-                        );
-                      }).toList(),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 16),
 
@@ -109,29 +140,60 @@ void showIncomeExpenseInputDialog(
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
-                      children: expenseTypes.map((type) {
-                        final isSelected = tempIncomeExpenseData.any((record) => record.description == type.name);
-                        return FilterChip(
-                          label: Text(type.name),
-                          selected: isSelected,
+                      children: [
+                        ...expenseTypes.map((type) {
+                          final isSelected = tempIncomeExpenseData.any((record) => record.description == type.name);
+                          return FilterChip(
+                            label: Text(type.name),
+                            selected: isSelected,
+                            onSelected: (isSelected) {
+                              setState(() {
+                                if (isSelected) {
+                                  _addIncomeExpenseRecord('expense', type.name);
+                                } else {
+                                  _removeIncomeExpenseRecord(type.name);
+                                }
+                              });
+                            },
+                            selectedColor: Colors.red.withOpacity(0.3),
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                color: Colors.red.withOpacity(0.3),
+                                width: 1.5,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                        // 지출 타입 관리 버튼
+                        FilterChip(
+                          label: Text(S.of(context).manageExpenseTypes),
+                          backgroundColor: Colors.grey[300],
                           onSelected: (isSelected) {
-                            setState(() {
-                              if (isSelected) {
-                                _addIncomeExpenseRecord('expense', type.name);
-                              } else {
-                                _removeIncomeExpenseRecord(type.name);
-                              }
-                            });
+                            Navigator.pop(context);
+                            showIncomeExpenseTypeSettingsDialog(
+                              context,
+                              onUpdate: () {
+                                Navigator.pop(context);
+                                showIncomeExpenseInputDialog(
+                                  context,
+                                  tempIncomeExpenseData,
+                                  onSave,
+                                );
+                              },
+                              category: 'expense',
+                              incomeExpenseData: tempIncomeExpenseData,
+                              onSave: onSave,
+                            );
+
                           },
-                          selectedColor: Colors.red.withOpacity(0.3),
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.red.withOpacity(0.3),
+                              color: Colors.grey.withOpacity(0.3),
                               width: 1.5,
                             ),
                           ),
-                        );
-                      }).toList(),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 16),
 
@@ -159,7 +221,6 @@ void showIncomeExpenseInputDialog(
                                   ),
                                 ),
                               ),
-
                               // 금액 입력 필드
                               Expanded(
                                 flex: 3,
@@ -178,7 +239,6 @@ void showIncomeExpenseInputDialog(
                                   },
                                 ),
                               ),
-
                               // 삭제 버튼
                               IconButton(
                                 icon: Icon(Icons.delete, color: Colors.red),
