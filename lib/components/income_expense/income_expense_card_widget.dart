@@ -113,7 +113,7 @@ class _IncomeExpenseCardWidgetState extends State<IncomeExpenseCardWidget> {
 
                 // 💸 지출 기록 출력
                 Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                  padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
                     S.of(context).totalExpense,
                     style: CommonStyles.smallTextStyle.copyWith(

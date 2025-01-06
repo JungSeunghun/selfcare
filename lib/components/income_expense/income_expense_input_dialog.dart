@@ -95,7 +95,7 @@ void showIncomeExpenseInputDialog(
                           selectedColor: Colors.green.withOpacity(0.3),
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: isSelected ? Colors.green : Colors.grey,
+                              color: Colors.green.withOpacity(0.3),
                               width: 1.5,
                             ),
                           ),
@@ -126,7 +126,7 @@ void showIncomeExpenseInputDialog(
                           selectedColor: Colors.red.withOpacity(0.3),
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: isSelected ? Colors.red : Colors.grey,
+                              color: Colors.red.withOpacity(0.3),
                               width: 1.5,
                             ),
                           ),

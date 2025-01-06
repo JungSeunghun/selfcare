@@ -79,6 +79,12 @@ void showEmotionInputDialog(
                               });
                             },
                             selectedColor: Colors.blueAccent.withOpacity(0.3),
+                            shape: StadiumBorder(
+                              side: BorderSide(
+                                color: Colors.blueAccent.withOpacity(0.3),
+                                width: 1.5,
+                              ),
+                            ),
                           );
                         }).toList(),
                         FilterChip(
@@ -92,6 +98,12 @@ void showEmotionInputDialog(
                               onSave: onSave,
                             );
                           },
+                          shape: StadiumBorder(
+                            side: BorderSide(
+                              color: Colors.grey.withOpacity(0.3),
+                              width: 1.5,
+                            ),
+                          ),
                         ),
                       ],
                     ),
