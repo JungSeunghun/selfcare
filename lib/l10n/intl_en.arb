@@ -71,5 +71,17 @@
   "addIncomeType": "Add Income Type",
   "addExpenseType": "Add Expense Type",
   "editIncomeTypeHint": "Edit income type",
-  "editExpenseTypeHint": "Edit expense type"
+  "editExpenseTypeHint": "Edit expense type",
+  "food": "food",
+  "noFoodMessage": "What did you eat today? 🍽️\nHealthy choices fuel a happy life! 🌱",
+  "editFoodRecord": "Edit Food Record",
+  "foodTypeSelect": "Select Food Type",
+  "manageFoodTypes": "Manage Food Types",
+  "foodRecordInput": "Food Record Input",
+  "enterMealType": "Enter Meal Type (Breakfast, Lunch, Dinner, Dessert)",
+  "foodTypeManagement": "Food Type Management",
+  "noFoodTypes": "No food types available. Please add a new one! 🍴",
+  "addFoodType": "Add Food Type",
+  "editFoodTypeHint": "Edit food type name",
+  "deleteFoodTypeConfirmation": "Are you sure you want to delete this food type?"
 }

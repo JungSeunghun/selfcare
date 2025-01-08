@@ -739,6 +739,126 @@ class S {
       args: [],
     );
   }
+
+  /// `food`
+  String get food {
+    return Intl.message(
+      'food',
+      name: 'food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What did you eat today? 🍽️\nHealthy choices fuel a happy life! 🌱`
+  String get noFoodMessage {
+    return Intl.message(
+      'What did you eat today? 🍽️\nHealthy choices fuel a happy life! 🌱',
+      name: 'noFoodMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Food Record`
+  String get editFoodRecord {
+    return Intl.message(
+      'Edit Food Record',
+      name: 'editFoodRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Food Type`
+  String get foodTypeSelect {
+    return Intl.message(
+      'Select Food Type',
+      name: 'foodTypeSelect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage Food Types`
+  String get manageFoodTypes {
+    return Intl.message(
+      'Manage Food Types',
+      name: 'manageFoodTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Record Input`
+  String get foodRecordInput {
+    return Intl.message(
+      'Food Record Input',
+      name: 'foodRecordInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Meal Type (Breakfast, Lunch, Dinner, Dessert)`
+  String get enterMealType {
+    return Intl.message(
+      'Enter Meal Type (Breakfast, Lunch, Dinner, Dessert)',
+      name: 'enterMealType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Type Management`
+  String get foodTypeManagement {
+    return Intl.message(
+      'Food Type Management',
+      name: 'foodTypeManagement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No food types available. Please add a new one! 🍴`
+  String get noFoodTypes {
+    return Intl.message(
+      'No food types available. Please add a new one! 🍴',
+      name: 'noFoodTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Food Type`
+  String get addFoodType {
+    return Intl.message(
+      'Add Food Type',
+      name: 'addFoodType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit food type name`
+  String get editFoodTypeHint {
+    return Intl.message(
+      'Edit food type name',
+      name: 'editFoodTypeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this food type?`
+  String get deleteFoodTypeConfirmation {
+    return Intl.message(
+      'Are you sure you want to delete this food type?',
+      name: 'deleteFoodTypeConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

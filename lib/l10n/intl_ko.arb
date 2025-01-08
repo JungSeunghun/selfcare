@@ -71,5 +71,17 @@
   "addIncomeType": "수입 유형 추가",
   "addExpenseType": "지출 유형 추가",
   "editIncomeTypeHint": "수입 유형 편집",
-  "editExpenseTypeHint": "지출 유형 편집"
+  "editExpenseTypeHint": "지출 유형 편집",
+  "food": "음식",
+  "noFoodMessage": "오늘 어떤 음식을 드셨나요? 🍽️\n건강한 선택이 행복한 삶을 만듭니다! 🌱",
+  "editFoodRecord": "음식 기록 편집",
+  "foodTypeSelect": "음식 종류 선택",
+  "manageFoodTypes": "음식 종류 관리",
+  "foodRecordInput": "음식 기록 입력",
+  "enterMealType": "식사 유형 입력 (아침, 점심, 저녁, 디저트)",
+  "foodTypeManagement": "음식 종류 관리",
+  "noFoodTypes": "등록된 음식 종류가 없습니다. 새로 추가해 주세요! 🍴",
+  "addFoodType": "음식 종류 추가",
+  "editFoodTypeHint": "음식 종류 이름 편집",
+  "deleteFoodTypeConfirmation": "이 음식 종류를 삭제하시겠습니까?"
 }

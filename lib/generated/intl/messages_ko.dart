@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addEmotionType": MessageLookupByLibrary.simpleMessage("새로운 감정 유형 추가"),
         "addExpense": MessageLookupByLibrary.simpleMessage("지출 추가"),
         "addExpenseType": MessageLookupByLibrary.simpleMessage("지출 유형 추가"),
+        "addFoodType": MessageLookupByLibrary.simpleMessage("음식 종류 추가"),
         "addIncome": MessageLookupByLibrary.simpleMessage("수입 추가"),
         "addIncomeExpenseType": MessageLookupByLibrary.simpleMessage("새 유형 추가"),
         "addIncomeType": MessageLookupByLibrary.simpleMessage("수입 유형 추가"),
@@ -51,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("삭제"),
         "deleteConfirmation": MessageLookupByLibrary.simpleMessage("삭제 확인"),
         "deleteEmotionTypeConfirmation": m2,
+        "deleteFoodTypeConfirmation":
+            MessageLookupByLibrary.simpleMessage("이 음식 종류를 삭제하시겠습니까?"),
         "deleteIncomeExpenseTypeConfirmation":
             MessageLookupByLibrary.simpleMessage("이 유형을 삭제하시겠습니까?"),
         "deleteWorkoutTypeConfirmation": m3,
@@ -58,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "editEmotionRecord": MessageLookupByLibrary.simpleMessage("감정 기록 수정"),
         "editEmotionTypeHint": MessageLookupByLibrary.simpleMessage("감정 유형 수정"),
         "editExpenseTypeHint": MessageLookupByLibrary.simpleMessage("지출 유형 편집"),
+        "editFoodRecord": MessageLookupByLibrary.simpleMessage("음식 기록 편집"),
+        "editFoodTypeHint": MessageLookupByLibrary.simpleMessage("음식 종류 이름 편집"),
         "editIncomeExpenseRecord":
             MessageLookupByLibrary.simpleMessage("수입/지출 기록 편집"),
         "editIncomeExpenseTypeHint":
@@ -74,6 +79,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("감정 유형 관리"),
         "emotionTypeSelect": MessageLookupByLibrary.simpleMessage("감정 타입 선택"),
         "enterAmount": MessageLookupByLibrary.simpleMessage("금액 입력"),
+        "enterMealType":
+            MessageLookupByLibrary.simpleMessage("식사 유형 입력 (아침, 점심, 저녁, 디저트)"),
+        "food": MessageLookupByLibrary.simpleMessage("음식"),
+        "foodRecordInput": MessageLookupByLibrary.simpleMessage("음식 기록 입력"),
+        "foodTypeManagement": MessageLookupByLibrary.simpleMessage("음식 종류 관리"),
+        "foodTypeSelect": MessageLookupByLibrary.simpleMessage("음식 종류 선택"),
         "home": MessageLookupByLibrary.simpleMessage("홈"),
         "hours": MessageLookupByLibrary.simpleMessage("시간"),
         "incomeExpenseTypeManagement":
@@ -83,12 +94,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "income_expense": MessageLookupByLibrary.simpleMessage("수입/지출"),
         "intensityLabel": MessageLookupByLibrary.simpleMessage("점"),
         "manageExpenseTypes": MessageLookupByLibrary.simpleMessage("지출 유형 관리"),
+        "manageFoodTypes": MessageLookupByLibrary.simpleMessage("음식 종류 관리"),
         "manageIncomeTypes": MessageLookupByLibrary.simpleMessage("수입 유형 관리"),
         "minutes": MessageLookupByLibrary.simpleMessage("분"),
         "noEmotionTypes":
             MessageLookupByLibrary.simpleMessage("사용 가능한 감정 유형이 없습니다."),
         "noExpenseTypes":
             MessageLookupByLibrary.simpleMessage("등록된 지출 유형이 없습니다."),
+        "noFoodMessage": MessageLookupByLibrary.simpleMessage(
+            "오늘 어떤 음식을 드셨나요? 🍽️\n건강한 선택이 행복한 삶을 만듭니다! 🌱"),
+        "noFoodTypes": MessageLookupByLibrary.simpleMessage(
+            "등록된 음식 종류가 없습니다. 새로 추가해 주세요! 🍴"),
         "noIncomeExpenseMessage": MessageLookupByLibrary.simpleMessage(
             "수입과 지출을 기록하며 목표를 향해 나아가요! 🚀\n작은 습관이 큰 성과로 이어집니다. 🌟"),
         "noIncomeExpenseTypes":

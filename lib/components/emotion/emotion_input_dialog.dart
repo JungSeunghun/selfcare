@@ -78,10 +78,10 @@ void showEmotionInputDialog(
                                 _toggleEmotion(emotionType, isSelected);
                               });
                             },
-                            selectedColor: Colors.blueAccent.withOpacity(0.3),
+                            selectedColor: Colors.blueAccent.withValues(alpha:0.3),
                             shape: StadiumBorder(
                               side: BorderSide(
-                                color: Colors.blueAccent.withOpacity(0.3),
+                                color: Colors.blueAccent.withValues(alpha:0.3),
                                 width: 1.5,
                               ),
                             ),
@@ -100,7 +100,7 @@ void showEmotionInputDialog(
                           },
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.grey.withOpacity(0.3),
+                              color: Colors.grey.withValues(alpha:0.3),
                               width: 1.5,
                             ),
                           ),

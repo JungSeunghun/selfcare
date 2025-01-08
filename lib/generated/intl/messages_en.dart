@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addExpense": MessageLookupByLibrary.simpleMessage("Add Expense"),
         "addExpenseType":
             MessageLookupByLibrary.simpleMessage("Add Expense Type"),
+        "addFoodType": MessageLookupByLibrary.simpleMessage("Add Food Type"),
         "addIncome": MessageLookupByLibrary.simpleMessage("Add Income"),
         "addIncomeExpenseType":
             MessageLookupByLibrary.simpleMessage("Add new type"),
@@ -58,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteConfirmation":
             MessageLookupByLibrary.simpleMessage("Delete Confirmation"),
         "deleteEmotionTypeConfirmation": m2,
+        "deleteFoodTypeConfirmation": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this food type?"),
         "deleteIncomeExpenseTypeConfirmation":
             MessageLookupByLibrary.simpleMessage(
                 "Do you want to delete this type?"),
@@ -70,6 +73,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edit Emotion Type"),
         "editExpenseTypeHint":
             MessageLookupByLibrary.simpleMessage("Edit expense type"),
+        "editFoodRecord":
+            MessageLookupByLibrary.simpleMessage("Edit Food Record"),
+        "editFoodTypeHint":
+            MessageLookupByLibrary.simpleMessage("Edit food type name"),
         "editIncomeExpenseRecord":
             MessageLookupByLibrary.simpleMessage("Edit Income/Expense Record"),
         "editIncomeExpenseTypeHint":
@@ -92,6 +99,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "emotionTypeSelect":
             MessageLookupByLibrary.simpleMessage("Select Emotion Type"),
         "enterAmount": MessageLookupByLibrary.simpleMessage("Enter Amount"),
+        "enterMealType": MessageLookupByLibrary.simpleMessage(
+            "Enter Meal Type (Breakfast, Lunch, Dinner, Dessert)"),
+        "food": MessageLookupByLibrary.simpleMessage("food"),
+        "foodRecordInput":
+            MessageLookupByLibrary.simpleMessage("Food Record Input"),
+        "foodTypeManagement":
+            MessageLookupByLibrary.simpleMessage("Food Type Management"),
+        "foodTypeSelect":
+            MessageLookupByLibrary.simpleMessage("Select Food Type"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hours": MessageLookupByLibrary.simpleMessage("h"),
         "incomeExpenseTypeManagement":
@@ -103,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "intensityLabel": MessageLookupByLibrary.simpleMessage("points"),
         "manageExpenseTypes":
             MessageLookupByLibrary.simpleMessage("Manage Expense Types"),
+        "manageFoodTypes":
+            MessageLookupByLibrary.simpleMessage("Manage Food Types"),
         "manageIncomeTypes":
             MessageLookupByLibrary.simpleMessage("Manage Income Types"),
         "minutes": MessageLookupByLibrary.simpleMessage("m"),
@@ -110,6 +128,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No emotion types available."),
         "noExpenseTypes":
             MessageLookupByLibrary.simpleMessage("No expense types available."),
+        "noFoodMessage": MessageLookupByLibrary.simpleMessage(
+            "What did you eat today? 🍽️\nHealthy choices fuel a happy life! 🌱"),
+        "noFoodTypes": MessageLookupByLibrary.simpleMessage(
+            "No food types available. Please add a new one! 🍴"),
         "noIncomeExpenseMessage": MessageLookupByLibrary.simpleMessage(
             "Track your finances to reach your goals! 🚀\nSmall steps lead to big results. 🌟"),
         "noIncomeExpenseTypes": MessageLookupByLibrary.simpleMessage(

@@ -94,10 +94,10 @@ void showIncomeExpenseInputDialog(
                                 }
                               });
                             },
-                            selectedColor: Colors.green.withOpacity(0.3),
+                            selectedColor: Colors.green.withValues(alpha:0.3),
                             shape: StadiumBorder(
                               side: BorderSide(
-                                color: Colors.green.withOpacity(0.3),
+                                color: Colors.green.withValues(alpha:0.3),
                                 width: 1.5,
                               ),
                             ),
@@ -126,7 +126,7 @@ void showIncomeExpenseInputDialog(
                           },
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.grey.withOpacity(0.3),
+                              color: Colors.grey.withValues(alpha:0.3),
                               width: 1.5,
                             ),
                           ),
@@ -155,10 +155,10 @@ void showIncomeExpenseInputDialog(
                                 }
                               });
                             },
-                            selectedColor: Colors.red.withOpacity(0.3),
+                            selectedColor: Colors.red.withValues(alpha:0.3),
                             shape: StadiumBorder(
                               side: BorderSide(
-                                color: Colors.red.withOpacity(0.3),
+                                color: Colors.red.withValues(alpha:0.3),
                                 width: 1.5,
                               ),
                             ),
@@ -188,7 +188,7 @@ void showIncomeExpenseInputDialog(
                           },
                           shape: StadiumBorder(
                             side: BorderSide(
-                              color: Colors.grey.withOpacity(0.3),
+                              color: Colors.grey.withValues(alpha:0.3),
                               width: 1.5,
                             ),
                           ),
