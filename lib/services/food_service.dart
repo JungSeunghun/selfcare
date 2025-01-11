@@ -14,20 +14,26 @@ class FoodService {
     }
   }
 
-  // 🍽️ 음식 데이터 저장 (리스트 형태)
+  // 🍽️ 음식 데이터 저장 (리스트 형태로 한 번에 저장)
   Future<List<FoodModel>> saveFoodList(List<FoodModel> foodList) async {
+    List<FoodModel> savedFoods = [];
+
     for (var food in foodList) {
       if (food.id == null) {
         // 새 음식 기록 추가
-        await _foodRepository.addFood(food);
+        final newFood = await _foodRepository.addFood(food);
+        savedFoods.add(newFood);
       } else {
         // 기존 음식 기록 업데이트
         await _foodRepository.updateFood(food);
+        savedFoods.add(food);
       }
     }
-    // 업데이트 후, 해당 날짜의 모든 음식 데이터 다시 가져오기
-    return await getFoodsByDate(foodList.first.date);
+
+    // 저장된 데이터 반환
+    return savedFoods;
   }
+
 
   /// ➕ 음식 데이터 추가
   Future<void> addFood(FoodModel food) async {

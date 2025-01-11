@@ -19,28 +19,12 @@ void showFoodInputDialog(
 
   const List<String> mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Dessert'];
 
+  // 음식 종류 토글 상태 설정
   final Map<String, bool> toggledFoods = {
     for (var type in foodTypes) type.name: foodData.any((food) => food.foodType == type.name),
   };
 
   final List<FoodModel> tempFoodData = List.from(foodData);
-
-  void _toggleFood(String foodType, bool isActive) {
-    if (isActive) {
-      tempFoodData.add(FoodModel(
-        id: null,
-        foodName: foodType,
-        mealType: '',
-        date: DateTime.now().toString(),
-        foodType: foodType,
-      ));
-    } else {
-      final index = tempFoodData.indexWhere((food) => food.foodType == foodType);
-      if (index != -1) {
-        tempFoodData.removeAt(index);
-      }
-    }
-  }
 
   void _toggleMealType(int index, String mealType, bool isSelected) {
     final mealTypesSet = tempFoodData[index].mealType.split(', ').toSet();
@@ -89,7 +73,20 @@ void showFoodInputDialog(
                             onSelected: (isSelected) {
                               setState(() {
                                 toggledFoods[foodType] = isSelected;
-                                _toggleFood(foodType, isSelected);
+                                if (isSelected) {
+                                  tempFoodData.add(FoodModel(
+                                    id: null,
+                                    foodName: foodType,
+                                    mealType: '',
+                                    date: DateTime.now().toString(),
+                                    foodType: foodType,
+                                  ));
+                                } else {
+                                  final index = tempFoodData.indexWhere((food) => food.foodType == foodType);
+                                  if (index != -1) {
+                                    tempFoodData.removeAt(index);
+                                  }
+                                }
                               });
                             },
                             selectedColor: Colors.blueAccent.withOpacity(0.3),
@@ -128,38 +125,58 @@ void showFoodInputDialog(
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: tempFoodData.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                          title: Text(
-                            tempFoodData[index].foodName,
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Wrap(
-                            spacing: 8,
-                            children: mealTypes.map((mealType) {
-                              final isSelected = tempFoodData[index].mealType.split(', ').contains(mealType);
-                              return ChoiceChip(
-                                label: Text(mealType),
-                                selected: isSelected,
-                                onSelected: (selected) {
-                                  setState(() {
-                                    _toggleMealType(index, mealType, selected);
-                                  });
-                                },
-                                selectedColor: Colors.blueAccent.withOpacity(0.3),
-                              );
-                            }).toList(),
-                          ),
-                          trailing: IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
-                            onPressed: () async {
-                              if (tempFoodData[index].id != null) {
-                                await foodService.deleteFood(tempFoodData[index].id!);
-                              }
-                              setState(() {
-                                tempFoodData.removeAt(index);
-                              });
-                            },
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // 음식 이름
+                              Text(
+                                tempFoodData[index].foodName,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              // 초이스칩과 삭제 버튼을 한 줄로 배치
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Wrap(
+                                      spacing: 8,
+                                      children: mealTypes.map((mealType) {
+                                        final isSelected = tempFoodData[index]
+                                            .mealType
+                                            .split(', ')
+                                            .contains(mealType);
+                                        return ChoiceChip(
+                                          label: Text(mealType),
+                                          selected: isSelected,
+                                          onSelected: (selected) {
+                                            setState(() {
+                                              _toggleMealType(index, mealType, selected);
+                                            });
+                                          },
+                                          selectedColor: Colors.blueAccent.withOpacity(0.3),
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                  // 삭제 버튼
+                                  IconButton(
+                                    icon: Icon(Icons.delete, color: Colors.red),
+                                    onPressed: () async {
+                                      final foodType = tempFoodData[index].foodType;
+                                      if (tempFoodData[index].id != null) {
+                                        await foodService.deleteFood(tempFoodData[index].id!);
+                                      }
+                                      setState(() {
+                                        toggledFoods[foodType] = false;
+                                        tempFoodData.removeAt(index);
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Divider(color: Colors.grey.shade300),
+                            ],
                           ),
                         );
                       },

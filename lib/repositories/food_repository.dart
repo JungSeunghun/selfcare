@@ -17,9 +17,10 @@ class FoodRepository {
   }
 
   /// ➕ 음식 데이터 추가
-  Future<void> addFood(FoodModel food) async {
+  Future<FoodModel> addFood(FoodModel food) async {
     final db = await _dbHelper.database;
-    await db.insert('foods', food.toMap());
+    final id = await db.insert('foods', food.toMap());
+    return food.copyWith(id: id);
   }
 
   /// ✏️ 음식 데이터 업데이트
