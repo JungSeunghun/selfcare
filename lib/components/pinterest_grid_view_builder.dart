@@ -74,7 +74,7 @@ class PinterestGridViewBuilder extends StatelessWidget {
               child: TextField(
                 controller: logController,
                 decoration: InputDecoration(
-                  labelText: '오늘의 한 줄',
+                  labelText: S.of(context).enter_today_note,
                   border: OutlineInputBorder(),
                 ),
                 onSubmitted: (value) => onUpdateLog(value),
