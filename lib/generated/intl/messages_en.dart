@@ -101,6 +101,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterAmount": MessageLookupByLibrary.simpleMessage("Enter Amount"),
         "enterMealType": MessageLookupByLibrary.simpleMessage(
             "Enter Meal Type (Breakfast, Lunch, Dinner, Dessert)"),
+        "enter_today_note": MessageLookupByLibrary.simpleMessage(
+            "Write a warm thought for today"),
         "food": MessageLookupByLibrary.simpleMessage("food"),
         "foodRecordInput":
             MessageLookupByLibrary.simpleMessage("Food Record Input"),

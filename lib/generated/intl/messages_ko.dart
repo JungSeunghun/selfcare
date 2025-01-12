@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterAmount": MessageLookupByLibrary.simpleMessage("금액 입력"),
         "enterMealType":
             MessageLookupByLibrary.simpleMessage("식사 유형 입력 (아침, 점심, 저녁, 디저트)"),
+        "enter_today_note":
+            MessageLookupByLibrary.simpleMessage("오늘을 따뜻하게 기억할 한 줄을 남겨보세요"),
         "food": MessageLookupByLibrary.simpleMessage("음식"),
         "foodRecordInput": MessageLookupByLibrary.simpleMessage("음식 기록 입력"),
         "foodTypeManagement": MessageLookupByLibrary.simpleMessage("음식 종류 관리"),

@@ -859,6 +859,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Write a warm thought for today`
+  String get enter_today_note {
+    return Intl.message(
+      'Write a warm thought for today',
+      name: 'enter_today_note',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

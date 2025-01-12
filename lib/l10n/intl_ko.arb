@@ -83,5 +83,6 @@
   "noFoodTypes": "등록된 음식 종류가 없습니다. 새로 추가해 주세요! 🍴",
   "addFoodType": "음식 종류 추가",
   "editFoodTypeHint": "음식 종류 이름 편집",
-  "deleteFoodTypeConfirmation": "이 음식 종류를 삭제하시겠습니까?"
+  "deleteFoodTypeConfirmation": "이 음식 종류를 삭제하시겠습니까?",
+  "enter_today_note": "오늘을 따뜻하게 기억할 한 줄을 남겨보세요"
 }

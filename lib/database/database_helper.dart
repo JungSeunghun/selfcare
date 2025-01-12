@@ -7,6 +7,7 @@ import 'package:path/path.dart';
 import 'tables/workout_table.dart';
 import 'tables/sleep_table.dart';
 import 'tables/emotion_table.dart';
+import 'tables/log_table.dart';
 import 'seed_data/workout_seed.dart';
 import 'seed_data/emotion_seed.dart';
 
@@ -29,7 +30,7 @@ class DatabaseHelper {
 
     return await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: (db, version) async {
         // 테이블 생성
         await WorkoutTable.create(db);
@@ -37,6 +38,7 @@ class DatabaseHelper {
         await EmotionTable.create(db);
         await IncomeExpenseTypeTable.create(db);
         await FoodTable.create(db);
+        await LogTable.create(db);
 
         // 기본 데이터 삽입
         await WorkoutSeed.insertDefaultData(db);
@@ -45,6 +47,9 @@ class DatabaseHelper {
         await FoodSeed.insertDefaultData(db);
       },
       onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await LogTable.create(db);
+        }
       },
     );
   }

@@ -147,7 +147,7 @@ void showFoodInputDialog(
                                             .split(', ')
                                             .contains(mealType);
                                         return ChoiceChip(
-                                          label: Text(mealType),
+                                          label: Text(mealType, style: TextStyle(fontSize: 12),),
                                           selected: isSelected,
                                           onSelected: (selected) {
                                             setState(() {

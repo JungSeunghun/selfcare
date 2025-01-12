@@ -8,11 +8,13 @@ import 'services/workout_service.dart';
 import 'services/emotion_service.dart';
 import 'services/income_expense_service.dart';
 import 'services/food_service.dart'; // 🍽️ 음식 서비스 추가
+import 'services/log_service.dart'; // 📝 Log 서비스 추가
 import 'models/sleep_record_model.dart';
 import 'models/workout_record_model.dart';
 import 'models/emotion_model.dart';
 import 'models/income_expense_model.dart';
 import 'models/food_model.dart'; // 🍽️ 음식 모델 추가
+import 'models/log_record_model.dart'; // 📝 Log 모델 추가
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final EmotionService _emotionService = EmotionService();
   final IncomeExpenseService _incomeExpenseService = IncomeExpenseService();
   final FoodService _foodService = FoodService(); // 🍽️ 음식 서비스 추가
+  final LogService _logService = LogService(); // 📝 Log 서비스 추가
 
   String selectedDate = DateFormat('yMd').format(DateTime.now());
   late SleepRecord sleepData;
@@ -41,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Emotion> emotionData = [];
   List<IncomeExpenseModel> incomeExpenses = [];
   List<FoodModel> foodData = []; // 🍽️ 음식 데이터 추가
+  LogRecord? logRecord; // 📝 오늘의 한줄 데이터 추가
   bool isLoading = false;
 
   @override
@@ -59,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final emotions = await _emotionService.getEmotionsByDate(date);
     final expenses = await _incomeExpenseService.getIncomeExpensesByDate(date);
     final foods = await _foodService.getFoodsByDate(date); // 🍽️ 음식 데이터 로드
+    final log = await _logService.getLogRecordByDate(date); // 📝 오늘의 한줄 로드
 
     setState(() {
       sleepData = sleepRecord;
@@ -66,7 +71,21 @@ class _HomeScreenState extends State<HomeScreen> {
       emotionData = emotions;
       incomeExpenses = expenses;
       foodData = foods; // 🍽️ 음식 데이터 업데이트
+      logRecord = log; // 📝 오늘의 한줄 업데이트
       isLoading = false;
+    });
+  }
+
+  // 📝 오늘의 한줄 입력 함수
+  Future<void> _saveLog(String note) async {
+    final newLog = LogRecord(
+      id: logRecord?.id,
+      note: note,
+      date: selectedDate,
+    );
+    await _logService.saveLogRecord(newLog);
+    setState(() {
+      logRecord = newLog;
     });
   }
 
@@ -137,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       emotionDataList: emotionData,
                       incomeExpenseDataList: incomeExpenses,
                       foodDataList: foodData, // 🍽️ 음식 데이터 전달
+                      logRecord: logRecord, // 📝 오늘의 한줄 전달
                       icons: icons,
                       sleepService: _sleepService,
                       workoutService: _workoutService,
@@ -149,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onUpdateEmotion: _updateEmotionData,
                       onUpdateIncomeExpense: _updateIncomeExpenseData,
                       onUpdateFood: _updateFoodData, // 🍽️ 음식 업데이트 함수 추가
+                      onUpdateLog: _saveLog, // 📝 오늘의 한줄 업데이트 함수 추가
                     ),
                   ),
               ],
